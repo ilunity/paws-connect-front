@@ -1,3 +1,43 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "next/core-web-vitals"
+  ],
+  "overrides": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [],
+  "rules": {
+    "no-console": "error",
+    "no-alert": "error",
+    "curly": "error",
+    "no-empty-function": "error",
+    "no-eval": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-expressions": "error",
+    "no-unused-labels": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "jsx-quotes": [
+      2,
+      "prefer-double"
+    ],
+    "prefer-const": "error",
+    "radix": "error",
+    "react/jsx-curly-spacing": [
+      "error",
+      {
+        "when": "always",
+        "children": true
+      }
+    ]
+  }
 }
