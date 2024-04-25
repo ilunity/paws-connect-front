@@ -3,7 +3,7 @@ import { Head, Html, Main, NextScript } from 'next/document';
 const Document: React.FC = () => (
   <Html lang="en">
     <Head />
-    <body>
+    <body >
       <Main />
       <NextScript />
     </body>

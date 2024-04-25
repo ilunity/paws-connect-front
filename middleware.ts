@@ -1,2 +1,5 @@
-export { default } from 'app/middlewares';
-export { config } from 'app/middlewares';
+export { default } from '@app/middlewares';
+
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)","/","/(api|trpc)(.*)"],
+};
