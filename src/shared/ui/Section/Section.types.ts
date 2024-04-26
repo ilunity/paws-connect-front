@@ -3,4 +3,5 @@ import { ReactNode } from 'react';
 export interface SectionProps {
   children: ReactNode;
   title?: string;
+  action?: ReactNode;
 }

@@ -1,1 +1,1 @@
-export {ProfilePage as default} from './ui';
+export { ProfilePage as default, getServerSideProps } from './ui';

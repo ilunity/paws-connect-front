@@ -1,1 +1,1 @@
-export { default } from '@pages/profile';
+export { default, getServerSideProps } from '@pages/profile';

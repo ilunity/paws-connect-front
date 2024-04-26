@@ -3,18 +3,12 @@ import { Button, Form, FormProps, Input, Typography } from 'antd';
 import { executeRequest } from '@shared/api';
 import { shelterService } from '@entities/shelter';
 import { useAuth } from '@clerk/nextjs';
-import { CreateShelterFormProps } from '@pages/create-shelter/ui/create-shelter-form/CreateShelterForm.types';
+import { CreateShelterFormProps, FieldType } from './CreateShelterForm.types';
 
-type FieldType = {
-  name: string;
-  description: string;
-  address: string;
-  city: string;
-};
 
-const WRAPPER_COL = { offset: 6, span: 12 };
+const WRAPPER_COL = { offset: 4, span: 8 };
 
-export const CreateShelterForm: React.FC<CreateShelterFormProps> = ({ onSuccess }) => {
+export const CreateShelterForm: React.FC<CreateShelterFormProps> = ({ onSuccess, initialValues }) => {
   const { userId } = useAuth();
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
@@ -31,48 +25,48 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = ({ onSuccess 
 
   return (
     <Form
-      name={'create-shelter-form'}
-      labelCol={{ span: WRAPPER_COL.offset }}
-      style={{ maxWidth: 800 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      name={ 'create-shelter-form' }
+      labelCol={ { span: WRAPPER_COL.offset } }
+      style={ { maxWidth: 800 } }
+      initialValues={ { initialValues, remember: true } }
+      onFinish={ onFinish }
+      onFinishFailed={ onFinishFailed }
       autoComplete="off"
     >
-      <Form.Item wrapperCol={WRAPPER_COL}>
-        <Typography.Title level={2}>
+      <Form.Item wrapperCol={ WRAPPER_COL }>
+        <Typography.Title level={ 2 }>
           Создать приют
         </Typography.Title>
       </Form.Item>
       <Form.Item<FieldType>
         label="Название"
         name="name"
-        rules={[{ required: true, message: 'Введите название вашего приюта!' }]}
+        rules={ [{ required: true, message: 'Введите название вашего приюта!' }] }
       >
         <Input />
       </Form.Item>
       <Form.Item<FieldType>
         label="Описание"
         name="description"
-        rules={[{ required: true, message: 'Введите описание вашего приюта!' }]}
+        rules={ [{ required: true, message: 'Введите описание вашего приюта!' }] }
       >
-        <Input.TextArea autoSize={{ minRows: 12, maxRows: 24 }} />
+        <Input.TextArea autoSize={ { minRows: 12, maxRows: 24 } } />
       </Form.Item>
       <Form.Item<FieldType>
         label="Город"
         name="city"
-        rules={[{ required: true, message: 'Введите город вашего приюта!' }]}
+        rules={ [{ required: true, message: 'Введите город вашего приюта!' }] }
       >
         <Input />
       </Form.Item>
       <Form.Item<FieldType>
         label="Адрес"
         name="address"
-        rules={[{ required: true, message: 'Введите адрес вашего приюта!' }]}
+        rules={ [{ required: true, message: 'Введите адрес вашего приюта!' }] }
       >
         <Input />
       </Form.Item>
-      <Form.Item wrapperCol={WRAPPER_COL}>
+      <Form.Item wrapperCol={ WRAPPER_COL }>
         <Button type="primary" htmlType="submit">
           Подтвердить
         </Button>

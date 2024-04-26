@@ -1,19 +1,26 @@
 import React from 'react';
 import { SectionProps } from './Section.types';
 import { useStyles } from './Section.styles';
-import { Flex, Typography } from 'antd';
+import { Flex, Space, Typography } from 'antd';
 
-export const Section: React.FC<SectionProps> = ({ title, children }) => {
+export const Section: React.FC<SectionProps> = ({ title, children, action }) => {
   const { styles } = useStyles();
 
   return (
     <Flex className={ styles.container }>
-      { title &&
-        <Typography.Title level={ 2 }>
-          { title }
-        </Typography.Title>
-      }
-      { children }
+      <Flex className={ styles.header }>
+        { title &&
+          <Typography.Title level={ 2 }>
+            { title }
+          </Typography.Title>
+        }
+        <Space>
+          { action }
+        </Space>
+      </Flex>
+      <div>
+        { children }
+      </div>
     </Flex>
   );
 };

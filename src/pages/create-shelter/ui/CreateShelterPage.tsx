@@ -1,7 +1,7 @@
 import { Layout } from '@widgets/layout';
-import { CreateShelterForm } from './create-shelter-form';
 import { Section } from '@shared/ui';
 import { useRouter } from 'next/router';
+import { CreateShelterForm } from '@features/create-shelter';
 
 export const CreateShelterPage: React.FC = () => {
   const router = useRouter();
