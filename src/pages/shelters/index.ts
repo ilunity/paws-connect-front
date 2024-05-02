@@ -1,1 +1,1 @@
-export { Shelters as default } from './ui';
+export { Shelters as default, getServerSideProps } from './ui';

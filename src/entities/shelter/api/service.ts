@@ -7,6 +7,10 @@ class ShelterService {
     return http.get(`shelters`);
   }
 
+  getOne(id: string): ApiRequestFnResponse<IShelter> {
+    return http.get(`shelters/${id}`);
+  }
+
   getByUser(userId: string): ApiRequestFnResponse<IShelter> {
     return http.get(`shelters?userId=${userId}`);
   }
