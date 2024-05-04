@@ -1,12 +1,17 @@
+export enum ANIMAL_STATUS {
+  FURLOUGH = 'FURLOUGH',
+  EXPOSED = 'EXPOSED',
+}
+
 export interface IAnimal {
   id: number;
   name: string;
   age: number;
   breed: string;
   description: string;
-  shelterId: string;
-  sex: "male" | "female";
+  shelterId: number;
+  sex: 'male' | 'female';
   avatar: string;
-  status: "default" | "exposed";
+  status: `${ANIMAL_STATUS}`;
   type: string;
 }

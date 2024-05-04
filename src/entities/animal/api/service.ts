@@ -1,17 +1,22 @@
-import { ApiRequestFnResponse, http } from '@shared/api';
+import { ApiRequestFnResponse, api } from '@shared/api';
 import { IAnimal } from '@entities/animal';
+import { ICreateAnimalBody } from '@entities/animal/api/types';
 
 class AnimalsService {
+  create(animal: ICreateAnimalBody):ApiRequestFnResponse<IAnimal> {
+    return api.post('animals', animal);
+  }
+
   get(): ApiRequestFnResponse<IAnimal[]> {
-    return http.get(`animals`);
+    return api.get(`animals`);
   }
 
   getOne(id: string): ApiRequestFnResponse<IAnimal> {
-    return http.get(`animals/${id}`);
+    return api.get(`animals/${id}`);
   }
 
   getByShelter(shelterId: string): ApiRequestFnResponse<IAnimal[]> {
-    return http.get(`animals?shelterId=${shelterId}`);
+    return api.get(`animals?shelterId=${shelterId}`);
   }
 }
 

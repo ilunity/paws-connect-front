@@ -1,8 +1,8 @@
-import { http } from '@shared/api';
+import { api } from '@shared/api';
 
 class UserService {
   getOne(userId: string) {
-    return http.get(`users/${userId}`);
+    return api.get(`users/${userId}`);
   }
 }
 
