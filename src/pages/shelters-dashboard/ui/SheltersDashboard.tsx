@@ -1,11 +1,9 @@
 import React from 'react';
 import { SheltersDashboardProps } from './SheltersDashboard.types';
-import { useStyles } from './SheltersDashboard.styles';
 import { GetServerSideProps } from 'next';
 import { executeRequest } from '@shared/api';
 import { IShelter, shelterService } from '@entities/shelter';
 import { getAuth } from '@clerk/nextjs/server';
-import { useRouter } from 'next/router';
 import { Layout } from '@widgets/layout';
 import { ShelterSection } from '@pages/shelter/ui/ShelterSection';
 import { CreateAnimalSection } from '@pages/shelters-dashboard/ui/CreateAnimalSection';
@@ -26,9 +24,6 @@ export const getServerSideProps: GetServerSideProps<SheltersDashboardProps> = as
 };
 
 export const SheltersDashboard: React.FC<SheltersDashboardProps> = ({ shelter }) => {
-  const { styles } = useStyles();
-  const router = useRouter();
-
   return (
     <Layout>
       <ShelterSection shelter={ shelter } />

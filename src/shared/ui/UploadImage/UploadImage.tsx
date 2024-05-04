@@ -54,9 +54,9 @@ export const UploadImage: React.FC<UploadImageProps> = (
   };
 
   const uploadButton = (
-    <button className={styles.uploadButton} type="button">
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div className={styles.uploadButtonText}>Загрузить</div>
+    <button className={ styles.uploadButton } type="button">
+      { loading ? <LoadingOutlined /> : <PlusOutlined /> }
+      <div className={ styles.uploadButtonText }>Загрузить</div>
     </button>
   );
 
@@ -65,16 +65,16 @@ export const UploadImage: React.FC<UploadImageProps> = (
       name="upload-image"
       listType="picture-card"
       className="avatar-uploader"
-      showUploadList={false}
-      beforeUpload={(file) => beforeUpload(file, maxMBSize)}
-      onChange={handleChange}
-      customRequest={stubRequest}
+      showUploadList={ false }
+      beforeUpload={ (file) => beforeUpload(file, maxMBSize) }
+      onChange={ handleChange }
+      customRequest={ stubRequest }
     >
-      {imageUrl
+      { imageUrl
         ? (
           <img
-            className={styles.img}
-            src={imageUrl}
+            className={ styles.img }
+            src={ imageUrl }
             alt="Загруженное изображение"
           />
         )

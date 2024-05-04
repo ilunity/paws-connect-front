@@ -23,46 +23,46 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, i
 
   return (
     <Form
-      name={'create-animal-form'}
-      labelCol={{ span: WRAPPER_COL.offset }}
-      style={{ maxWidth: 800 }}
-      initialValues={{ initialValues, remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      name={ 'create-animal-form' }
+      labelCol={ { span: WRAPPER_COL.offset } }
+      style={ { maxWidth: 800 } }
+      initialValues={ { initialValues, remember: true } }
+      onFinish={ onFinish }
+      onFinishFailed={ onFinishFailed }
       autoComplete="on"
     >
       <Form.Item<FieldType>
         label="Имя"
         name="name"
-        rules={[{ required: true, message: 'Введите имя питомца!' }]}
+        rules={ [{ required: true, message: 'Введите имя питомца!' }] }
       >
         <Input />
       </Form.Item>
       <Form.Item<FieldType>
         label="Описание"
         name="description"
-        rules={[{ required: true, message: 'Введите описание питомца!' }]}
+        rules={ [{ required: true, message: 'Введите описание питомца!' }] }
       >
-        <Input.TextArea autoSize={{ minRows: 12, maxRows: 24 }} />
+        <Input.TextArea autoSize={ { minRows: 12, maxRows: 24 } } />
       </Form.Item>
       <Form.Item<FieldType>
         label="Возраст"
         name="age"
-        rules={[{ required: true, message: 'Введите город вашего приюта!' }]}
+        rules={ [{ required: true, message: 'Введите город вашего приюта!' }] }
       >
-        <InputNumber min={0} max={100} />
+        <InputNumber min={ 0 } max={ 100 } />
       </Form.Item>
       <Form.Item<FieldType>
         label="Порода"
         name="breed"
-        rules={[{ required: true, message: 'Введите породу питомца!' }]}
+        rules={ [{ required: true, message: 'Введите породу питомца!' }] }
       >
         <Input />
       </Form.Item>
       <Form.Item<FieldType>
         label="Пол"
         name="sex"
-        rules={[{ required: true, message: 'Введите породу питомца!' }]}
+        rules={ [{ required: true, message: 'Введите породу питомца!' }] }
       >
         <Select>
           <Select.Option value="male">Мужской</Select.Option>
@@ -72,28 +72,28 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, i
       <Form.Item<FieldType>
         label="Изображение"
         name="avatar"
-        rules={[{ required: true, message: 'Выберите изобрлажение питомца!' }]}
+        rules={ [{ required: true, message: 'Выберите изобрлажение питомца!' }] }
       >
-        <UploadImage maxMBSize={8} />
+        <UploadImage maxMBSize={ 8 } />
       </Form.Item>
       <Form.Item<FieldType>
         label="Статус"
         name="status"
-        rules={[{ required: true, message: 'Выберите статус питомца!' }]}
+        rules={ [{ required: true, message: 'Выберите статус питомца!' }] }
       >
         <Select>
-          <Select.Option value={ANIMAL_STATUS.FURLOUGH}> На передержке </Select.Option>
-          <Select.Option value={ANIMAL_STATUS.EXPOSED}> Ждет хозяина </Select.Option>
+          <Select.Option value={ ANIMAL_STATUS.FURLOUGH }> На передержке </Select.Option>
+          <Select.Option value={ ANIMAL_STATUS.EXPOSED }> Ждет хозяина </Select.Option>
         </Select>
       </Form.Item>
       <Form.Item<FieldType>
         label="Тип"
         name="type"
-        rules={[{ required: true, message: 'Выберите тип питомца!' }]}
+        rules={ [{ required: true, message: 'Выберите тип питомца!' }] }
       >
         <Input />
       </Form.Item>
-      <Form.Item wrapperCol={WRAPPER_COL}>
+      <Form.Item wrapperCol={ WRAPPER_COL }>
         <Button type="primary" htmlType="submit">
           Подтвердить
         </Button>
