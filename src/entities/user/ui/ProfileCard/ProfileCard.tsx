@@ -2,7 +2,7 @@ import React from 'react';
 import { ProfileCardProps } from './ProfileCard.types';
 import { useStyles } from './ProfileCard.styles';
 import { useUser } from '@clerk/nextjs';
-import { Avatar, Card, Flex, Space, Typography } from 'antd';
+import { Avatar, Card, Flex, Tag, Typography } from 'antd';
 
 export const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
   const { styles } = useStyles();
@@ -20,12 +20,16 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
         >
           { user.email }
         </Typography.Text>
-        <Typography.Text
-          className={ `${styles.text} ${styles.userRole}` }
-          keyboard
+        <Tag
+          color={ 'blue' }
+          className={ styles.userRoleTag }
         >
-          { user.role }
-        </Typography.Text>
+          <Typography.Text
+            className={ styles.text }
+          >
+            { user.role }
+          </Typography.Text>
+        </Tag>
       </Flex>
     </Card>
   );

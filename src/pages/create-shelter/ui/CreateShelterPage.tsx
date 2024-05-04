@@ -9,7 +9,7 @@ export const CreateShelterPage: React.FC = () => {
   return (
     <Layout>
       <Section>
-        <CreateShelterForm onSuccess={ () => router.back() } />
+        <CreateShelterForm onSuccess={ router.back } />
       </Section>
     </Layout>
   );

@@ -8,7 +8,7 @@ export const useStyles = createStyles(({ token }) => ({
     fontSize: token.fontSizeXL,
     verticalAlign: 'center',
   },
-  userRole: {
+  userRoleTag: {
     marginLeft: 'auto',
   }
 }));

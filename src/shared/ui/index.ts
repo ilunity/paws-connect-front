@@ -4,3 +4,4 @@ export * from './SignInButton';
 export * from './SignOutButton';
 export * from './Section';
 export * from './LinkCardTitle';
+export * from './UploadImage';
