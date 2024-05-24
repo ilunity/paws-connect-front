@@ -2,6 +2,9 @@ import { getSlots, InputSlot, OutputSlot } from 'slot-calculator';
 import { makeAutoObservable } from 'mobx';
 import { SlotProps } from './Slot/Slot.types';
 import { getUtcDateTime } from '@shared/utils';
+import { Settings } from 'luxon';
+
+Settings.defaultZone = 'utc';
 
 export interface PickerStateSlot extends OutputSlot {
   picked: boolean;
@@ -22,10 +25,14 @@ export class SlotsPickerState {
       availability,
       unavailability,
       duration,
+      from,
+      to
     }: {
       duration: SlotProps['duration'];
       availability: InputSlot[];
       unavailability?: InputSlot[];
+      from: string;
+      to: string;
     },
   ) {
     const { allSlotsByDay, availableSlotsByDay } = getSlots({
@@ -33,6 +40,8 @@ export class SlotsPickerState {
       availability,
       unavailability,
       outputTimezone: 'UTC',
+      from,
+      to
     });
 
     this.allSlotsByDay = this.initMetadata(allSlotsByDay);
@@ -63,25 +72,23 @@ export class SlotsPickerState {
     }
   }
 
-  getInterval() {
+  getMaxDaytimeInterval() {
     let minHour = 23;
     let maxHour = 0;
 
     const available = this.availableSlotsByDay;
 
     for (const day of Object.keys(available)) {
-      for (const slot of available[day]) {
-        const slotsCount = available[day].length;
+      const slotsCount = available[day].length;
 
-        const firstSlot = available[day][0].from;
-        const lastSlot = available[day][slotsCount - 1].from;
+      const firstSlot = available[day][0].from;
+      const lastSlot = available[day][slotsCount - 1].from;
 
-        if (getUtcDateTime(firstSlot).hour < minHour) {
-          minHour = getUtcDateTime(firstSlot).hour;
-        }
-        if (getUtcDateTime(lastSlot).hour > maxHour) {
-          maxHour = getUtcDateTime(lastSlot).hour;
-        }
+      if (getUtcDateTime(firstSlot).hour < minHour) {
+        minHour = getUtcDateTime(firstSlot).hour;
+      }
+      if (getUtcDateTime(lastSlot).hour > maxHour) {
+        maxHour = getUtcDateTime(lastSlot).hour;
       }
     }
 

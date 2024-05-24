@@ -1,10 +1,12 @@
-import { InputSlot } from 'slot-calculator';
+import { ISOSlot } from 'slot-calculator';
 import { SlotProps } from './Slot/Slot.types';
-import { PickedSlotReturn } from './SlotsPicker.state';
+import { PickedSlotReturn } from './slots-picker.state';
 
 export interface SlotsPickerProps {
   duration: SlotProps['duration'];
-  availability: InputSlot[];
-  unavailability?: InputSlot[];
+  availability: ISOSlot[];
+  unavailability?: ISOSlot[];
   onChange: (slots: PickedSlotReturn[]) => void;
+  from: string;
+  to: string;
 }

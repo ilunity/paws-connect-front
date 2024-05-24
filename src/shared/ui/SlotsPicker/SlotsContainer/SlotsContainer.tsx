@@ -19,7 +19,7 @@ export const SlotsContainer: React.FC<SlotsContainerProps> = observer((
   const { styles } = useStyles();
 
   const getSlots = () => {
-    const interval = slotsPickerState.getInterval();
+    const interval = slotsPickerState.getMaxDaytimeInterval();
 
     const slotsElements = [];
 

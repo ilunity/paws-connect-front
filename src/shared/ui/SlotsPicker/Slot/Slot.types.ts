@@ -1,4 +1,4 @@
-import { PickerStateSlot, SlotsPickerState } from '../SlotsPicker.state';
+import { PickerStateSlot, SlotsPickerState } from '../slots-picker.state';
 
 export interface SlotProps {
   title?: string;
