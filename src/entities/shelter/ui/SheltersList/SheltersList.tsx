@@ -3,7 +3,7 @@ import { SheltersListProps } from './SheltersList.types';
 import { Col, Row } from 'antd';
 import { ShelterCard } from '@entities/shelter';
 
-export const SheltersList: React.FC<SheltersListProps> = ({ shelters }) => {
+export const SheltersList: React.FC<SheltersListProps> = ({ shelters, onClick }) => {
   return (
     <Row gutter={ [8, 8] }>
       { shelters.map(shelter => (
@@ -13,7 +13,11 @@ export const SheltersList: React.FC<SheltersListProps> = ({ shelters }) => {
           lg={ 12 }
           xs={ 24 }
         >
-          <ShelterCard key={ shelter.id } shelter={ shelter } />
+          <ShelterCard
+            key={ shelter.id }
+            shelter={ shelter }
+            onClick={ onClick }
+          />
         </Col>
       )) }
     </Row>

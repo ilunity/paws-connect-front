@@ -4,17 +4,32 @@ import { useStyles } from './Layout.styles';
 import { Layout as AntdLayout } from 'antd';
 import { Header } from '@widgets/header';
 
-const { Content } = AntdLayout;
+const { Content, Sider } = AntdLayout;
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({ aside, children }) => {
   const { styles } = useStyles();
 
   return (
     <AntdLayout className={ styles.container }>
       <Header />
-      <Content className={ styles.contentContainer }>
-        { children }
-      </Content>
+      { aside
+        ? (
+          <AntdLayout
+            className={ styles.asideLayout }
+            hasSider
+          >
+            <Sider className={ styles.aside }>
+              { aside }
+            </Sider>
+            <Content className={ styles.contentContainer }>
+              { children }
+            </Content>
+          </AntdLayout>)
+        : (
+          <Content className={ styles.contentContainer }>
+            { children }
+          </Content>)
+      }
     </AntdLayout>
   );
 };

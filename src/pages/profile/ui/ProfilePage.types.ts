@@ -3,5 +3,5 @@ import { IShelter } from '@entities/shelter';
 
 export interface ProfilePageProps {
   user: IUser;
-  shelter: IShelter | null;
+  shelters: IShelter[];
 }

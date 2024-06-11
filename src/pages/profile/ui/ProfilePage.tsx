@@ -6,7 +6,8 @@ import { userService } from '@entities/user';
 import { getAuth } from '@clerk/nextjs/server';
 import { ProfileSection } from '@widgets/profile-section';
 import { shelterService } from '@entities/shelter';
-import { ShelterProfileSection } from '@widgets/shelter-profile-section';
+import { SheltersProfileSection } from '@widgets/shelters-profile-section';
+import React from 'react';
 
 export const getServerSideProps: GetServerSideProps<ProfilePageProps> = async ({ req }) => {
   const { userId } = getAuth(req);
@@ -23,16 +24,16 @@ export const getServerSideProps: GetServerSideProps<ProfilePageProps> = async ({
   return {
     props: {
       user,
-      shelter: shelterResponse.data,
+      shelters: shelterResponse.data || [],
     },
   };
 };
 
-export const ProfilePage: React.FC<ProfilePageProps> = ({ user, shelter }) => {
+export const ProfilePage: React.FC<ProfilePageProps> = ({ user, shelters }) => {
   return (
     <Layout>
-      <ProfileSection user={ user } />
-      <ShelterProfileSection shelter={ shelter } />
+      <ProfileSection user={user} />
+      <SheltersProfileSection shelters={shelters} />
     </Layout>
   );
 };

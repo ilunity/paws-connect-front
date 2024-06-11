@@ -18,4 +18,16 @@ export const useStyles = createStyles(({ token }) => ({
     background: token.colorBgContainer,
     borderRadius: token.borderRadiusLG,
   },
+  asideLayout: {
+    minHeight: '100%',
+  },
+  aside: {
+    minHeight: '100%',
+    width: 200,
+    overflow: 'auto',
+    position: 'fixed',
+    left: 0,
+    top: 0,
+    bottom: 0,
+  },
 }));

@@ -2,23 +2,21 @@ import React from 'react';
 import { ShelterCardProps } from './ShelterCard.types';
 import { useStyles } from './ShelterCard.styles';
 import { Card, Typography } from 'antd';
-import { useRouter } from 'next/router';
 import { LinkCardTitle } from '@shared/ui';
 
 const { Paragraph, Text } = Typography;
 
-export const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
-  const router = useRouter();
+export const ShelterCard: React.FC<ShelterCardProps> = ({ shelter, onClick }) => {
   const { styles } = useStyles();
 
-  const goToShelter = () => {
-    router.push({ pathname: `/shelters/${shelter.id}` });
+  const handleClick = () => {
+    onClick(shelter.id);
   };
 
   return (
     <Card
       title={
-        <LinkCardTitle onClick={ goToShelter }>
+        <LinkCardTitle onClick={ handleClick }>
           { shelter.name }
         </LinkCardTitle>
       }
@@ -31,13 +29,13 @@ export const ShelterCard: React.FC<ShelterCardProps> = ({ shelter }) => {
             rows: 4,
             expandable: true,
             symbol: 'Прочитать полностью',
-            onExpand: goToShelter,
+            onExpand: handleClick,
           } }
         >
           { shelter.description }
         </Paragraph>
         <Text type={ 'secondary' }>
-          { shelter.address }
+          { shelter.location }
         </Text>
       </Typography>
     </Card>

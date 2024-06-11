@@ -21,10 +21,11 @@ api.interceptors.response.use((response: AxiosResponse) => {
 
 api.interceptors.request.use((config) => {
   const newConfig = { ...config };
-  newConfig.url = `api/${config.url}`;
+  newConfig.url = `${config.url}`;
 
-  if (newConfig.headers['Content-Type'] === 'multipart/form-data')
+  if (newConfig.headers['Content-Type'] === 'multipart/form-data') {
     return newConfig;
+  }
 
   if (config.params) {
     newConfig.params = decamelizeKeys(config.params);

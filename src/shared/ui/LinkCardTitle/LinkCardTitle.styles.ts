@@ -1,9 +1,13 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(({ token }) => ({
-  title: {
+  container: {
+    justifyContent: 'space-between',
     alignItems: 'center',
     cursor: 'pointer',
+  },
+  title: {
+    alignItems: 'center',
     marginBottom: '0px !important',
   },
   titleIcon: {

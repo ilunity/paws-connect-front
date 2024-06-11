@@ -1,5 +1,5 @@
 import { IShelter } from '@entities/shelter';
 
-export interface SheltersDashboardProps {
+export interface SheltersProfileSectionProps {
   shelters: IShelter[];
 }
