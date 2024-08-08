@@ -1,9 +1,4 @@
-export enum ROLES {
-  USER = 'USER',
-  SHELTER_WORKER = 'SHELTER_WORKER',
-  SHELTER_OWNER = 'SHELTER_OWNER',
-  MODERATOR = 'MODERATOR',
-}
+import { ROLES } from '@shared/types/index';
 
 export interface ClerkMetadata {
   roles?: `${ROLES}`[];
@@ -16,3 +11,4 @@ declare global {
     metadata: ClerkMetadata;
   }
 }
+

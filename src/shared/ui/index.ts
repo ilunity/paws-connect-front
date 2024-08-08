@@ -6,3 +6,4 @@ export * from './Section';
 export * from './LinkCardTitle';
 export * from './UploadImage';
 export * from './SlotsPicker';
+export * from './GenderSelect';

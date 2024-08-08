@@ -1,14 +1,14 @@
-import { ApiRequestFnResponse, api } from '@shared/api';
+import { api, ApiRequestFnResponse } from '@shared/api';
 import { IAnimal } from '@entities/animal';
-import { ICreateAnimalBody } from '@entities/animal/api/types';
+import { ICreateAnimalBody, IGetAnimalsParams } from '@entities/animal/api/types';
 
 class AnimalsService {
-  create(animal: ICreateAnimalBody):ApiRequestFnResponse<IAnimal> {
+  create(animal: ICreateAnimalBody): ApiRequestFnResponse<IAnimal> {
     return api.post('animals', animal);
   }
 
-  get(): ApiRequestFnResponse<IAnimal[]> {
-    return api.get(`animals`);
+  get(params: IGetAnimalsParams): ApiRequestFnResponse<IAnimal[]> {
+    return api.get(`animals`, { params });
   }
 
   getOne(id: string): ApiRequestFnResponse<IAnimal> {

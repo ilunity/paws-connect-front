@@ -3,14 +3,14 @@ import { SectionProps } from './Section.types';
 import { useStyles } from './Section.styles';
 import { Flex, Space, Typography } from 'antd';
 
-export const Section: React.FC<SectionProps> = ({ title, children, action }) => {
+export const Section: React.FC<SectionProps> = ({ title, children, action, level = 2 }) => {
   const { styles } = useStyles();
 
   return (
     <Flex className={ styles.container }>
       <Flex className={ styles.header }>
         { title &&
-          <Typography.Title level={ 2 }>
+          <Typography.Title level={ level }>
             { title }
           </Typography.Title>
         }

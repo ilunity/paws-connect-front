@@ -1,0 +1,11 @@
+export enum ROLES {
+  USER = 'USER',
+  SHELTER_WORKER = 'SHELTER_WORKER',
+  SHELTER_OWNER = 'SHELTER_OWNER',
+  MODERATOR = 'MODERATOR',
+}
+
+export enum GENDER {
+  MALE = 'MALE',
+  FEMALE = 'FEMALE',
+}

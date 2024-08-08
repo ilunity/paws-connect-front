@@ -1,11 +1,11 @@
 import React from 'react';
 import { AnimalCardProps } from './AnimalCard.types';
 import { useStyles } from './AnimalCard.styles';
-import { Card, Image, Typography } from 'antd';
+import { Card, Flex, Typography } from 'antd';
 import { useRouter } from 'next/router';
-import { LinkCardTitle } from '@shared/ui';
+import { ageToStringFormat } from '@shared/utils';
 
-const { Paragraph,Text } = Typography;
+const { Text } = Typography;
 
 export const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
   const router = useRouter();
@@ -16,46 +16,28 @@ export const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
   };
 
   return (
-    <Card title={
-      <LinkCardTitle onClick={ goToAnimal }>
-        { animal.name }
-      </LinkCardTitle>
-    }>
-      <Image
-        className={ styles.image }
-        src={ animal.avatar }
-      />
-      <Paragraph
-        className={ styles.description }
-        ellipsis={ {
-          rows: 8,
-          expandable: true,
-          symbol: 'Подробнее',
-          onExpand: goToAnimal,
-        } }
-      >
-        <Typography>
-          <Text strong>
-            { 'Возраст: ' }
-          </Text>
-          { animal.age }
-        </Typography>
-        <Typography>
-          <Text strong>
-            { 'Порода: ' }
-          </Text>
-          { animal.breed }
-        </Typography>
-        <Typography>
-          <Text strong>
-            { 'Пол: ' }
-          </Text>
-          { animal.sex }
-        </Typography>
-        <Typography>
-          { animal.description }
-        </Typography>
-      </Paragraph>
+    <Card
+      className={ styles.container }
+      hoverable
+      cover={
+        <img
+          className={ styles.image }
+          src={ process.env.NEXT_PUBLIC_STATIC + animal.avatar }
+        />
+      }
+      onClick={ goToAnimal }
+    >
+      <Flex className={ styles.textContainer }>
+        <Text className={ styles.primaryText }>
+          { animal.name }
+        </Text>
+        <Text className={ styles.secondaryText } type={ 'secondary' }>
+          { ageToStringFormat(animal.age) }
+        </Text>
+      </Flex>
+      <Text className={ styles.secondaryText } type={ 'secondary' }>
+        { animal.breed }
+      </Text>
     </Card>
   );
 };

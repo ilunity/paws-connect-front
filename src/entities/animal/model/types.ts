@@ -1,3 +1,15 @@
+import { GENDER } from '@shared/types';
+
+export enum ANIMAL_TYPE {
+  DOG = 'Собака',
+  CAT = 'Кошка',
+}
+
+export const genderText: Record<`${GENDER}`, string> = {
+  [GENDER.MALE]: 'Мальчик',
+  [GENDER.FEMALE]: 'Девочка',
+}
+
 export enum ANIMAL_STATUS {
   FURLOUGH = 'FURLOUGH',
   EXPOSED = 'EXPOSED',
@@ -10,7 +22,7 @@ export interface IAnimal {
   breed: string;
   description: string;
   shelterId: number;
-  sex: 'male' | 'female';
+  gender: `${GENDER}`;
   avatar: string;
   status: `${ANIMAL_STATUS}`;
   type: string;

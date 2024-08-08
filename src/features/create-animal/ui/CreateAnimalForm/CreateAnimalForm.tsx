@@ -2,15 +2,13 @@ import React from 'react';
 import { CreateAnimalFormProps, FieldType } from './CreateAnimalForm.types';
 import { Button, Form, FormProps, Input, InputNumber, Select } from 'antd';
 import { executeRequest } from '@shared/api';
-import { ANIMAL_STATUS, animalsService } from '@entities/animal';
-import { UploadImage } from '@shared/ui';
+import { ANIMAL_STATUS, animalsService, AnimalTypeSelect } from '@entities/animal';
+import { GenderSelect, UploadImage } from '@shared/ui';
 
 const WRAPPER_COL = { offset: 4, span: 8 };
 
 export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, initialValues, shelterId }) => {
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
-    // @ts-ignore
-    console.log(values);
     const response = await executeRequest(() => animalsService.create({ ...values, shelterId }));
     onSuccess?.();
     // todo Обработка ошибок
@@ -48,7 +46,7 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, i
       <Form.Item<FieldType>
         label="Возраст"
         name="age"
-        rules={ [{ required: true, message: 'Введите город вашего приюта!' }] }
+        rules={ [{ required: true, message: 'Введите возраст питомца!' }] }
       >
         <InputNumber min={ 0 } max={ 100 } />
       </Form.Item>
@@ -61,18 +59,15 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, i
       </Form.Item>
       <Form.Item<FieldType>
         label="Пол"
-        name="sex"
-        rules={ [{ required: true, message: 'Введите породу питомца!' }] }
+        name="gender"
+        rules={ [{ required: true, message: 'Выберите пол питомца!' }] }
       >
-        <Select>
-          <Select.Option value="male">Мужской</Select.Option>
-          <Select.Option value="female">Женский</Select.Option>
-        </Select>
+        <GenderSelect />
       </Form.Item>
       <Form.Item<FieldType>
         label="Изображение"
         name="avatar"
-        rules={ [{ required: true, message: 'Выберите изобрлажение питомца!' }] }
+        rules={ [{ required: true, message: 'Выберите изображение питомца!' }] }
       >
         <UploadImage maxMBSize={ 8 } />
       </Form.Item>
@@ -91,7 +86,7 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = ({ onSuccess, i
         name="type"
         rules={ [{ required: true, message: 'Выберите тип питомца!' }] }
       >
-        <Input />
+        <AnimalTypeSelect/>
       </Form.Item>
       <Form.Item wrapperCol={ WRAPPER_COL }>
         <Button type="primary" htmlType="submit">

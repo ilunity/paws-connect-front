@@ -1,9 +1,10 @@
-import { ClerkMetadata, ROLES } from '@shared/types/globals';
+import { ClerkMetadata } from '@shared/types/globals';
 import { getAuth } from '@clerk/nextjs/server';
 import { NextRequest } from 'next/server';
 import type { NextApiRequest } from 'next';
 import type { IncomingMessage } from 'http';
 import type { NextApiRequestCookies } from 'next/dist/server/api-utils';
+import { ROLES } from '@shared/types';
 
 type GsspRequest = IncomingMessage & {
   cookies: NextApiRequestCookies;
