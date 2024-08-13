@@ -1,5 +1,5 @@
 import { api, ApiRequestFnResponse } from '@shared/api';
-import { IAnimal } from '@entities/animal';
+import { IAnimal, IExtendedAnimal } from '@entities/animal';
 import { ICreateAnimalBody, IGetAnimalsParams } from '@entities/animal/api/types';
 
 class AnimalsService {
@@ -11,7 +11,7 @@ class AnimalsService {
     return api.get(`animals`, { params });
   }
 
-  getOne(id: string): ApiRequestFnResponse<IAnimal> {
+  getOne(id: string): ApiRequestFnResponse<IExtendedAnimal> {
     return api.get(`animals/${id}`);
   }
 

@@ -1,4 +1,5 @@
-import { ANIMAL_TYPE, GENDER, IAnimal } from '@entities/animal';
+import { ANIMAL_TYPE, IAnimal } from '@entities/animal';
+import { GENDER } from '@shared/types';
 
 export type ICreateAnimalBody = Omit<IAnimal, 'id'>;
 

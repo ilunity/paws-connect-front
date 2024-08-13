@@ -4,9 +4,9 @@ import { useStyles } from './SlotsContainer.styles';
 import { Flex, Typography } from 'antd';
 import { Slot } from '../Slot';
 import { DateTime } from 'luxon';
-import { SlotsDivider } from '../SlotsDivider';
 import { observer } from 'mobx-react-lite';
 import { getUtcDateTime } from '@shared/utils';
+import { Divider } from '@shared/ui';
 
 export const SlotsContainer: React.FC<SlotsContainerProps> = observer((
   {
@@ -42,14 +42,13 @@ export const SlotsContainer: React.FC<SlotsContainerProps> = observer((
             slot={ slot }
             slotsPickerState={ slotsPickerState }
           />
-          { isEndOfHour && !isLastSlot ? <SlotsDivider /> : '' }
+          { isEndOfHour && !isLastSlot ? <Divider /> : '' }
         </React.Fragment>,
       );
     }
 
     return slotsElements;
   };
-
 
   return (
     <Flex className={ styles.container }>

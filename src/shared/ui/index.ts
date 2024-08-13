@@ -7,3 +7,5 @@ export * from './LinkCardTitle';
 export * from './UploadImage';
 export * from './SlotsPicker';
 export * from './GenderSelect';
+export * from './Divider';
+export * from './StatisticCard';

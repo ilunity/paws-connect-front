@@ -1,7 +1,7 @@
 import React from 'react';
-import { useStyles } from './SlotsDivider.styles';
+import { useStyles } from './Divider.styles';
 
-export const SlotsDivider: React.FC = () => {
+export const Divider: React.FC = () => {
   const { styles } = useStyles();
 
   return (
