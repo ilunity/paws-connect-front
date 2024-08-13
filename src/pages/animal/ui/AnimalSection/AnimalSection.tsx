@@ -8,7 +8,7 @@ import { ageToStringFormat } from '@shared/utils';
 import { ShelterReference } from '@entities/shelter';
 import { useRouter } from 'next/router';
 
-const { Title, Paragraph,Text } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 export const AnimalSection: React.FC<AnimalSectionProps> = ({ animal }) => {
   const { styles } = useStyles();
@@ -26,6 +26,7 @@ export const AnimalSection: React.FC<AnimalSectionProps> = ({ animal }) => {
           height={ 400 }
           className={ styles.image }
           src={ process.env.NEXT_PUBLIC_STATIC + animal.avatar }
+          alt={ 'Изображение животного' }
         />
         <Flex className={ styles.animalInfoContainer }>
           <Title level={ 2 }>
