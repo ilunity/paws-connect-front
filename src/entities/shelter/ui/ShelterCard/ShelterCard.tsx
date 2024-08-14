@@ -2,9 +2,9 @@ import React from 'react';
 import { ShelterCardProps } from './ShelterCard.types';
 import { useStyles } from './ShelterCard.styles';
 import { Card, Typography } from 'antd';
-import { LinkCardTitle } from '@shared/ui';
+import { PhoneNumberLink } from '@shared/ui';
 
-const { Paragraph, Text } = Typography;
+const { Paragraph, Text, Link } = Typography;
 
 export const ShelterCard: React.FC<ShelterCardProps> = ({ shelter, onClick }) => {
   const { styles } = useStyles();
@@ -15,28 +15,27 @@ export const ShelterCard: React.FC<ShelterCardProps> = ({ shelter, onClick }) =>
 
   return (
     <Card
+      hoverable
       title={
-        <LinkCardTitle onClick={ handleClick }>
-          { shelter.name }
-        </LinkCardTitle>
+        <Typography>
+          <Text className={ styles.title }>
+            { shelter.name }
+          </Text>
+          <Text className={ styles.title } type={ 'secondary' }>
+            { ` (${shelter.location})` }
+          </Text>
+        </Typography>
       }
-      bordered={ false }
+      onClick={ handleClick }
     >
       <Typography>
         <Paragraph
           className={ styles.description }
-          ellipsis={ {
-            rows: 4,
-            expandable: true,
-            symbol: 'Прочитать полностью',
-            onExpand: handleClick,
-          } }
+          ellipsis={ { rows: 6 } }
         >
           { shelter.description }
         </Paragraph>
-        <Text type={ 'secondary' }>
-          { shelter.location }
-        </Text>
+        <PhoneNumberLink phoneNumber={ shelter.tel } />
       </Typography>
     </Card>
   );

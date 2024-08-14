@@ -2,17 +2,15 @@ import React from 'react';
 import { AnimalCardProps } from './AnimalCard.types';
 import { useStyles } from './AnimalCard.styles';
 import { Card, Flex, Typography } from 'antd';
-import { useRouter } from 'next/router';
 import { ageToStringFormat } from '@shared/utils';
 
 const { Text } = Typography;
 
-export const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
-  const router = useRouter();
+export const AnimalCard: React.FC<AnimalCardProps> = ({ animal, onClick }) => {
   const { styles } = useStyles();
 
-  const goToAnimal = () => {
-    router.push({ pathname: `/animals/${animal.id}` });
+  const handleClick = () => {
+    onClick(animal.id);
   };
 
   return (
@@ -25,7 +23,7 @@ export const AnimalCard: React.FC<AnimalCardProps> = ({ animal }) => {
           src={ process.env.NEXT_PUBLIC_STATIC + animal.avatar }
         />
       }
-      onClick={ goToAnimal }
+      onClick={ handleClick }
     >
       <Flex className={ styles.textContainer }>
         <Text className={ styles.primaryText }>

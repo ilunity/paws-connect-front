@@ -16,6 +16,8 @@ export const useStyles = createStyles(({ css, token, responsive }) => ({
       ${responsive.sm} {
           padding: 16px 32px;
       }
+
+      background: repeat url("/background/background-image.png");
   `,
   content: {
     flexGrow: 1,

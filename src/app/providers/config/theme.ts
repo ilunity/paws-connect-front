@@ -1,11 +1,10 @@
 import { ThemeConfig } from 'antd';
 
 export const theme: ThemeConfig = {
-  token: {
+  token: {},
+  components: {
+    Layout: {
+      headerBg: '#C5705D',
+    },
   },
-  components:{
-    Layout:{
-      headerBg: '#922B21'
-    }
-  }
 };

@@ -1,29 +1,30 @@
 import React from 'react';
 import { ShelterSectionProps } from './ShelterSection.types';
 import { useStyles } from './ShelterSection.styles';
-import { Section } from '@shared/ui';
-import { Card, Typography } from 'antd';
+import { PhoneNumberLink, Section } from '@shared/ui';
+import { Typography } from 'antd';
 
-const {Paragraph, Text} = Typography;
+const { Paragraph, Link, Text } = Typography;
 
-export const ShelterSection: React.FC<ShelterSectionProps> = ({shelter}) => {
+export const ShelterSection: React.FC<ShelterSectionProps> = ({ shelter }) => {
   const { styles } = useStyles();
 
   return (
     <Section
-      title={ shelter.name }
+      title={ `${shelter.name} (${shelter.location})` }
     >
-      <Card>
-        <Paragraph className={ styles.description }>
-          { shelter.description }
-        </Paragraph>
-        <Text>
-          { `${shelter.city}: ` }
-          <Text type={ 'secondary' }>
-            { shelter.address }
-          </Text>
+      <Paragraph className={ styles.description }>
+        { shelter.description }
+      </Paragraph>
+      <Typography>
+        <Text
+          className={ styles.phoneNumberText }
+          strong
+        >
+          { 'Контакты: ' }
         </Text>
-      </Card>
+        <PhoneNumberLink phoneNumber={ shelter.tel } />
+      </Typography>
     </Section>
   );
 };

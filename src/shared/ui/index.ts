@@ -9,3 +9,4 @@ export * from './SlotsPicker';
 export * from './GenderSelect';
 export * from './Divider';
 export * from './StatisticCard';
+export * from './PhoneNumberLink';

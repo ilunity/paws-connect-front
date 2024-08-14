@@ -1,7 +1,10 @@
 import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(({ token }) => ({
+  title: {
+    fontSize: token.fontSizeLG,
+  },
   description: {
-    minHeight: token.fontSize * token.lineHeight * 4,
-  }
+    height: token.fontSize * token.lineHeight * 6,
+  },
 }));

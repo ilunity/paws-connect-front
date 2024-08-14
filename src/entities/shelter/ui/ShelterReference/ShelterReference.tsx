@@ -2,6 +2,7 @@ import React from 'react';
 import { ShelterReferenceProps } from './ShelterReference.types';
 import { useStyles } from './ShelterReference.styles';
 import { Card, Flex, Typography } from 'antd';
+import { PhoneNumberLink } from '@shared/ui';
 
 const { Text, Link } = Typography;
 
@@ -23,9 +24,7 @@ export const ShelterReference: React.FC<ShelterReferenceProps> = ({ shelter, onC
             ({ shelter.location })
           </Text>
         </Flex>
-        <Link className={ styles.text }>
-          { shelter.tel }
-        </Link>
+        <PhoneNumberLink phoneNumber={ shelter.tel } />
       </Flex>
     </Card>
   );
