@@ -2,8 +2,8 @@ import { ROLES } from '@shared/types/index';
 
 export interface ClerkMetadata {
   roles?: `${ROLES}`[];
-  shelterOwner: number[];
-  shelterWorker: number[];
+  shelterOwner: string[];
+  shelterWorker: string[];
 }
 
 declare global {

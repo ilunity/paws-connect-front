@@ -16,12 +16,12 @@ export const checkRoles = (req: RequestLike, roles: `${ROLES}`[]) => {
   return suitableRoleIndex && suitableRoleIndex !== -1;
 };
 
-export const isShelterOwner = (req: RequestLike, shelterId: number) => {
-  return getClerkMetadata(req).shelterOwner?.includes(shelterId) || false;
+export const isShelterOwner = (req: RequestLike, shelterId: string) => {
+  return getClerkMetadata(req).shelterOwner?.includes(String(shelterId)) || false;
 };
 
-export const isShelterWorker = (req: RequestLike, shelterId: number) => {
-  return getClerkMetadata(req).shelterWorker?.includes(shelterId);
+export const isShelterWorker = (req: RequestLike, shelterId: string) => {
+  return getClerkMetadata(req).shelterWorker?.includes(String(shelterId));
 };
 
 export const getClerkMetadata = (req: RequestLike) => {

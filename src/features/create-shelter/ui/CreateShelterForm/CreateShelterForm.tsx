@@ -6,8 +6,9 @@ import { useAuth } from '@clerk/nextjs';
 import { CREATE_SHELTER_FORM_TYPES, CreateShelterFormProps, FieldType } from './CreateShelterForm.types';
 import { requestMessageHandler } from '@shared/utils/message-handler';
 
-
-const WRAPPER_COL = { offset: 4, span: 8 };
+const { Title } = Typography;
+const FORM_WRAPPER_COL = { xs: { span: 9 }, lg: { span: 6 } };
+const OFFSET_WRAPPER = { xs: { offset: 9 }, lg: { offset: 6 } };
 
 export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
   {
@@ -24,7 +25,7 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     const response = type === CREATE_SHELTER_FORM_TYPES.CREATE
-      ? await executeRequest(() => shelterService.create({ ...values, userId }))
+      ? await executeRequest(() => shelterService.create({ ...values, ownerId: userId }))
       : await executeRequest(() => shelterService.update({ ...values, shelterId }));
 
     requestHandler(response);
@@ -44,20 +45,20 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
       { contextHolder }
       <Form
         name={ 'shelter-form' }
-        labelCol={ { span: WRAPPER_COL.offset } }
+        labelCol={ FORM_WRAPPER_COL }
         style={ { maxWidth: 800 } }
-        initialValues={ { initialValues, remember: true } }
+        initialValues={ initialValues }
         onFinish={ onFinish }
         onFinishFailed={ onFinishFailed }
         autoComplete="off"
       >
-        <Form.Item wrapperCol={ { offset: WRAPPER_COL.offset } }>
-          <Typography.Title level={ 2 }>
+        <Form.Item wrapperCol={ OFFSET_WRAPPER }>
+          <Title level={ 2 }>
             { type === CREATE_SHELTER_FORM_TYPES.CREATE
               ? 'Создать приют'
               : 'Редактировать информацию о приюте'
             }
-          </Typography.Title>
+          </Title>
         </Form.Item>
         <Form.Item<FieldType>
           label="Название"
@@ -87,7 +88,7 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
         >
           <Input />
         </Form.Item>
-        <Form.Item wrapperCol={ WRAPPER_COL }>
+        <Form.Item wrapperCol={ OFFSET_WRAPPER }>
           <Button type="primary" htmlType="submit">
             Подтвердить
           </Button>

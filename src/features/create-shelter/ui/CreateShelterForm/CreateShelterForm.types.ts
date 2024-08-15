@@ -19,5 +19,5 @@ export type CreateShelterFormProps = {
   onSuccess?: () => void;
   initialValues: FieldType;
   type: `${CREATE_SHELTER_FORM_TYPES.UPDATE}`;
-  shelterId: number;
+  shelterId: string;
 }

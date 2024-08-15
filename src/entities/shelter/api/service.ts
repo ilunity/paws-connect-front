@@ -12,7 +12,7 @@ class ShelterService {
   }
 
   getByUser(userId: string): ApiRequestFnResponse<IShelter[]> {
-    return api.get(`shelters?user_id=${userId}`);
+    return api.get(`shelters?owner_id=${userId}`);
   }
 
   create(shelter: ICreateShelterBody): ApiRequestFnResponse<IShelter> {

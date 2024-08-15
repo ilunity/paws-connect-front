@@ -8,7 +8,7 @@ export const SheltersProfileSection: React.FC<SheltersProfileSectionProps> = ({ 
   const router = useRouter();
 
   const goToShelterDashboard = (shelterId: number) => {
-    router.push({ pathname: `/shelters/dashboard/${shelterId}/info` });
+    router.push({ pathname: `/shelters/${shelterId}/dashboard/info` });
   };
 
   return (

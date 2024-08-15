@@ -25,6 +25,7 @@
     "slot-calculator": "^2.2.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/compose-function": "^0.0.33",
     "@types/humps": "^2.0.6",
     "@types/luxon": "^3.4.2",

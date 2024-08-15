@@ -5,9 +5,10 @@ import {
   ShelterDashboardNavigationProps,
 } from './ShelterDashboardNavigation.types';
 import { Menu, MenuProps } from 'antd';
-import { InfoOutlined, ReadOutlined, ScheduleOutlined, TeamOutlined } from '@ant-design/icons';
+import { InfoOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { usePathname } from 'next/navigation';
+import PawOutlined from 'public/icons/paw-outlined.svg';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -17,35 +18,25 @@ const ownerItems: MenuItem[] = [
     label: 'Информация',
     icon: <InfoOutlined />,
   },
-  {
-    key: SHELTER_DASHBOARD_ITEMS.SCHEDULE,
-    label: 'Расписание',
-    icon: <ScheduleOutlined />,
-  },
-  {
-    key: SHELTER_DASHBOARD_ITEMS.WORKERS,
-    label: 'Сотрудники',
-    icon: <TeamOutlined />,
-  },
 ];
 
 const workersItems: MenuItem[] = [
   {
     key: SHELTER_DASHBOARD_ITEMS.ANIMALS,
     label: 'Питомцы',
-    icon: <ReadOutlined />,
+    icon: <PawOutlined />,
   },
 ];
 
 export const ShelterDashboardNavigation: React.FC<ShelterDashboardNavigationProps> = ({ owner, selected }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const baseDashboardPathname = pathname.split('/').slice(0, -2).join('/');
+  const baseDashboardPathname = pathname!.split('/').slice(0, -1).join('/');
 
   const items = owner ? [...ownerItems, ...workersItems] : workersItems;
 
-  const handleClick = ({ key }) => {
-    const dashboardItemHref = dashboardItem2Href(key);
+  const handleClick = ({ key }: { key: string }) => {
+    const dashboardItemHref = dashboardItem2Href(key as `${SHELTER_DASHBOARD_ITEMS}`);
     router.replace({ pathname: `${baseDashboardPathname}/${dashboardItemHref}` });
   };
 
