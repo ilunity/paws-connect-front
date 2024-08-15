@@ -16,15 +16,16 @@ export const SheltersProfileSection: React.FC<SheltersProfileSectionProps> = ({ 
 
   return (
     <Section title={ 'Ваши приюты' }>
-      { shelters.map(shelter => (
-        <Flex className={ styles.container }>
+      <Flex className={ styles.container }>
+        { shelters.map(shelter => (
           <ShelterReference
+            key={ shelter.id }
             size={ 'small' }
             shelter={ shelter }
             onClick={ goToShelterDashboard }
           />
-        </Flex>
-      )) }
+        )) }
+      </Flex>
     </Section>
   );
 };

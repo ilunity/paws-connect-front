@@ -10,9 +10,9 @@ export const CreateAnimalSection: React.FC<CreateAnimalSectionProps> = ({ shelte
 
   return (
     <Section title={ 'Добавить питомца' }>
-      {contextHolder}
+      { contextHolder }
       <CreateAnimalForm
-        type={CREATE_ANIMAL_FORM_TYPES.CREATE}
+        type={ CREATE_ANIMAL_FORM_TYPES.CREATE }
         shelterId={ shelterId }
         onSuccess={ () => {
           messageApi.success('Питомец успешно добавлен!');

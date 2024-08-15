@@ -9,12 +9,8 @@ export const UpdateAnimalsSection: React.FC<UpdateAnimalsSectionProps> = ({ anim
   const router = useRouter();
   const pathname = usePathname();
 
-  const goToUpdateAnimal = (animalId: number) => {
+  const goToUpdateAnimal = (animalId: string) => {
     router.push({ pathname: `${pathname}/${animalId}` });
-  };
-
-  const goToCreateAnimal = () => {
-    router.push({ pathname: `${pathname}/create` });
   };
 
   return (

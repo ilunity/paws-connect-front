@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
   };
 };
 
-export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ shelterId, animal, isOwner }) => {
+export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ animal, isOwner }) => {
   return (
     <ShelterDashboardLayout
       dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_UPDATE }
