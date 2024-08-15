@@ -1,9 +1,8 @@
 import React from 'react';
 import { AnimalPageProps } from './AnimalPage.types';
-import { useStyles } from './AnimalPage.styles';
 import { GetServerSideProps } from 'next';
 import { executeRequest } from '@shared/api';
-import { animalsService, IAnimal } from '@entities/animal';
+import { animalsService, IExtendedAnimal } from '@entities/animal';
 import { Layout } from '@widgets/layout';
 import { AnimalSection } from '../AnimalSection';
 
@@ -17,14 +16,12 @@ export const getServerSideProps: GetServerSideProps<AnimalPageProps> = async ({ 
 
   return {
     props: {
-      animal: animalResponse.data as IAnimal,
+      animal: animalResponse.data as IExtendedAnimal,
     },
   };
 };
 
 export const AnimalPage: React.FC<AnimalPageProps> = ({ animal }) => {
-  const { styles } = useStyles();
-
   return (
     <Layout>
       <AnimalSection animal={ animal } />

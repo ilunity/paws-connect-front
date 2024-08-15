@@ -2,6 +2,8 @@ import React from 'react';
 import { ShelterDashboardLayoutProps } from './ShelterDashboardLayout.types';
 import { ShelterDashboardNavigation } from '@widgets/shelter-dashboard-navigation';
 import { Layout } from '@widgets/layout';
+import { Flex } from 'antd';
+import { useStyles } from './ShelterDashboardLayout.styles';
 
 export const ShelterDashboardLayout: React.FC<ShelterDashboardLayoutProps> = (
   {
@@ -10,11 +12,14 @@ export const ShelterDashboardLayout: React.FC<ShelterDashboardLayoutProps> = (
     children,
   },
 ) => {
+  const { styles } = useStyles();
+
   return (
-    <Layout
-      aside={ <ShelterDashboardNavigation owner={ isOwner } selected={ dashboardItemName } /> }
-    >
-      { children }
+    <Layout>
+      <Flex className={ styles.container }>
+        <ShelterDashboardNavigation owner={ isOwner } selected={ dashboardItemName } />
+        { children }
+      </Flex>
     </Layout>
   );
 };

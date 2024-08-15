@@ -1,6 +1,8 @@
 import { IAnimal } from '@entities/animal';
+import { ReactNode } from 'react';
 
 export interface AnimalCardProps {
   animal: IAnimal;
-  onClick: (animalId: number) => void;
+  onClick: (animalId: string) => void;
+  extra?: ReactNode;
 }

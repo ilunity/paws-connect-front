@@ -9,7 +9,7 @@ import { animalsService, IAnimal } from '@entities/animal';
 import { AnimalsSection } from '@widgets/animals-section';
 
 export const getServerSideProps: GetServerSideProps<ShelterPageProps> = async ({ params }) => {
-  const shelterId = params?.id as string;
+  const shelterId = params?.shelterId as string;
 
   const shelterResponse = await executeRequest(() => shelterService.getOne(shelterId));
   if (shelterResponse.error) {

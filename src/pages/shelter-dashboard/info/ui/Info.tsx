@@ -11,7 +11,7 @@ import { CREATE_SHELTER_FORM_TYPES } from '@features/create-shelter/ui/CreateShe
 import { message } from 'antd';
 
 export const getServerSideProps: GetServerSideProps<InfoProps> = async ({ req, params }) => {
-  const shelterId = params?.id as string;
+  const shelterId = params?.shelterId as string;
 
   const shelterResponse = await executeRequest(() => shelterService.getOne(shelterId));
   if (shelterResponse.error) {

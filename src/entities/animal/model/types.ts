@@ -17,12 +17,12 @@ export enum ANIMAL_STATUS {
 }
 
 export interface IAnimal {
-  id: number;
+  id: string;
   name: string;
   age: number;
   breed: string;
   description: string;
-  shelterId: number;
+  shelterId: string;
   gender: `${GENDER}`;
   avatar: string;
   status: `${ANIMAL_STATUS}`;

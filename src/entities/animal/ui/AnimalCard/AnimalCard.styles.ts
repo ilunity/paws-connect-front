@@ -3,10 +3,11 @@ import { createStyles } from 'antd-style';
 export const useStyles = createStyles(({ token, css, responsive }) => ({
   container: {
     maxWidth: 300,
+    flex: 1,
   },
   image: {
-    height: 170,
     objectFit: 'cover',
+
   },
   textContainer: {
     justifyContent: 'space-between',

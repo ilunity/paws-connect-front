@@ -4,9 +4,15 @@ import { useStyles } from './ShelterReference.styles';
 import { Card, Flex, Typography } from 'antd';
 import { PhoneNumberLink } from '@shared/ui';
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
-export const ShelterReference: React.FC<ShelterReferenceProps> = ({ shelter, onClick }) => {
+export const ShelterReference: React.FC<ShelterReferenceProps> = (
+  {
+    shelter,
+    onClick,
+    size = 'default',
+  },
+) => {
   const { styles } = useStyles();
 
   const handleClick = () => {
@@ -14,7 +20,7 @@ export const ShelterReference: React.FC<ShelterReferenceProps> = ({ shelter, onC
   };
 
   return (
-    <Card>
+    <Card size={ size }>
       <Flex className={ styles.container }>
         <Flex className={ styles.clickableContainer } onClick={ handleClick }>
           <Typography className={ styles.text }>

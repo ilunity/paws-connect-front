@@ -2,6 +2,7 @@ import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(({ token }) => ({
   container: {
-    display: 'inline-block',
+    flexDirection: 'column',
+    gap: token.marginXL,
   },
 }));

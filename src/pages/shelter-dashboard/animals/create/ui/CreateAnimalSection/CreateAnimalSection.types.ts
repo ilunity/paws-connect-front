@@ -1,3 +1,3 @@
 export interface CreateAnimalSectionProps {
-  shelterId: number;
+  shelterId: string;
 }

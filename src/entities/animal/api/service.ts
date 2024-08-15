@@ -1,6 +1,6 @@
 import { api, ApiRequestFnResponse } from '@shared/api';
 import { IAnimal, IExtendedAnimal } from '@entities/animal';
-import { ICreateAnimalBody, IGetAnimalsParams } from '@entities/animal/api/types';
+import { ICreateAnimalBody, IGetAnimalsParams, IUpdateAnimalBody } from '@entities/animal/api/types';
 
 class AnimalsService {
   create(animal: ICreateAnimalBody): ApiRequestFnResponse<IAnimal> {
@@ -17,6 +17,14 @@ class AnimalsService {
 
   getByShelter(shelterId: string): ApiRequestFnResponse<IAnimal[]> {
     return api.get(`animals?shelterId=${shelterId}`);
+  }
+
+  update(animal: IUpdateAnimalBody): ApiRequestFnResponse<IAnimal> {
+    return api.put('animals', animal);
+  }
+
+  remove(id: string) {
+    return api.delete(`animals/${id}`);
   }
 }
 
