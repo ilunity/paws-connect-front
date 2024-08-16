@@ -14,10 +14,6 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
   const shelterId = params?.shelterId as string;
   const animalId = params?.animalId as string;
 
-  // const shelterResponse = await executeRequest(() => shelterService.getOne(shelterId));
-  // if (shelterResponse.error) {
-  //   throw new Error(shelterResponse.error);
-  // }
   const animalResponse = await executeRequest(() => animalsService.getOne(animalId));
   if (animalResponse.error) {
     throw new Error(animalResponse.error);
@@ -27,16 +23,15 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
     props: {
       shelterId,
       animal: animalResponse.data as IExtendedAnimal,
-      isOwner: isShelterOwner(req, shelterId),
     },
   };
 };
 
-export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ animal, isOwner }) => {
+export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ shelterId, animal}) => {
   return (
     <ShelterDashboardLayout
       dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_UPDATE }
-      isOwner={ isOwner }
+      shelterId={ shelterId }
     >
       <UpdateAnimalSection animal={ animal } />
     </ShelterDashboardLayout>

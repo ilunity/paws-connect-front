@@ -10,5 +10,9 @@ declare global {
   interface CustomJwtSessionClaims {
     metadata: ClerkMetadata;
   }
+
+  interface UserPublicMetadata extends ClerkMetadata {
+
+  }
 }
 

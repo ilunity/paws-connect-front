@@ -21,18 +21,17 @@ export const getServerSideProps: GetServerSideProps<InfoProps> = async ({ req, p
   return {
     props: {
       shelter: shelterResponse.data as IShelter,
-      isOwner: isShelterOwner(req, shelterResponse.data?.id as string),
     },
   };
 };
 
-export const Info: React.FC<InfoProps> = ({ shelter, isOwner }) => {
+export const Info: React.FC<InfoProps> = ({ shelter }) => {
   const [messageApi, contextHolder] = message.useMessage();
 
   return (
     <ShelterDashboardLayout
       dashboardItemName={ SHELTER_DASHBOARD_ITEMS.INFO }
-      isOwner={ isOwner }
+      shelterId={ shelter.id }
     >
       { contextHolder }
       <CreateShelterForm
