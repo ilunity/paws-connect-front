@@ -1,6 +1,5 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { isShelterOwner } from '@shared/utils/roles';
 import { SHELTER_DASHBOARD_ITEMS } from '@widgets/shelter-dashboard-navigation/ui/ShelterDashboardNavigation.types';
 import { ShelterDashboardLayout } from '@widgets/shelter-dashboard-layout';
 import {
@@ -27,7 +26,7 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
   };
 };
 
-export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ shelterId, animal}) => {
+export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ shelterId, animal }) => {
   return (
     <ShelterDashboardLayout
       dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_UPDATE }

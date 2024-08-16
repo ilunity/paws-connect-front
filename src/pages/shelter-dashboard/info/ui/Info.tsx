@@ -5,7 +5,6 @@ import { executeRequest } from '@shared/api';
 import { IShelter, shelterService } from '@entities/shelter';
 import { ShelterDashboardLayout } from '@widgets/shelter-dashboard-layout';
 import { SHELTER_DASHBOARD_ITEMS } from '@widgets/shelter-dashboard-navigation/ui/ShelterDashboardNavigation.types';
-import { isShelterOwner } from '@shared/utils/roles';
 import { CreateShelterForm } from '@features/create-shelter';
 import { CREATE_SHELTER_FORM_TYPES } from '@features/create-shelter/ui/CreateShelterForm/CreateShelterForm.types';
 import { message } from 'antd';
