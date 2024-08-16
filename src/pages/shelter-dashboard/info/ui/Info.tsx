@@ -8,6 +8,7 @@ import { SHELTER_DASHBOARD_ITEMS } from '@widgets/shelter-dashboard-navigation/u
 import { CreateShelterForm } from '@features/create-shelter';
 import { CREATE_SHELTER_FORM_TYPES } from '@features/create-shelter/ui/CreateShelterForm/CreateShelterForm.types';
 import { message } from 'antd';
+import { parsePhoneNumber } from 'react-phone-hooks';
 
 export const getServerSideProps: GetServerSideProps<InfoProps> = async ({ req, params }) => {
   const shelterId = params?.shelterId as string;
@@ -35,7 +36,7 @@ export const Info: React.FC<InfoProps> = ({ shelter }) => {
       { contextHolder }
       <CreateShelterForm
         type={ CREATE_SHELTER_FORM_TYPES.UPDATE }
-        initialValues={ shelter }
+        initialValues={ { ...shelter, tel: parsePhoneNumber(shelter.tel) } }
         shelterId={ shelter.id }
         onSuccess={ () => {
           messageApi.success('Информация о приюте обновлена!');

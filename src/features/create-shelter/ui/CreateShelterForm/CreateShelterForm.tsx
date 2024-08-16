@@ -5,6 +5,8 @@ import { shelterService } from '@entities/shelter';
 import { useAuth } from '@clerk/nextjs';
 import { CREATE_SHELTER_FORM_TYPES, CreateShelterFormProps, FieldType } from './CreateShelterForm.types';
 import { requestMessageHandler } from '@shared/utils/message-handler';
+import PhoneInput from 'antd-phone-input';
+import { getStringFromPhoneNumber, phoneNumberValidator } from '@shared/utils';
 
 const { Title } = Typography;
 const FORM_WRAPPER_COL = { xs: { span: 9 }, lg: { span: 6 } };
@@ -24,9 +26,11 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
   const requestHandler = requestMessageHandler(messageApi);
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
+    const tel = getStringFromPhoneNumber(values.tel);
+
     const response = type === CREATE_SHELTER_FORM_TYPES.CREATE
-      ? await executeRequest(() => shelterService.create({ ...values, ownerId: userId }))
-      : await executeRequest(() => shelterService.update({ ...values, shelterId }));
+      ? await executeRequest(() => shelterService.create({ ...values, tel, ownerId: userId }))
+      : await executeRequest(() => shelterService.update({ ...values, tel, shelterId }));
 
     requestHandler(response);
     if (response.success) {
@@ -84,9 +88,9 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
         <Form.Item<FieldType>
           label="Номер телефона"
           name="tel"
-          rules={ [{ required, message: 'Введите номер телефона!' }] }
+          rules={ [{ validator: phoneNumberValidator }] }
         >
-          <Input />
+          <PhoneInput enableSearch />
         </Form.Item>
         <Form.Item wrapperCol={ OFFSET_WRAPPER }>
           <Button type="primary" htmlType="submit">

@@ -3,7 +3,7 @@ import { SheltersProfileSectionProps } from './SheltersProfileSection.types';
 import { ShelterReference } from '@entities/shelter';
 import { useRouter } from 'next/router';
 import { Section } from '@shared/ui';
-import { Flex } from 'antd';
+import { Button, Flex } from 'antd';
 import { useStyles } from './SheltersProfileSection.styles';
 
 export const SheltersProfileSection: React.FC<SheltersProfileSectionProps> = ({ shelters }) => {
@@ -14,8 +14,22 @@ export const SheltersProfileSection: React.FC<SheltersProfileSectionProps> = ({ 
     router.push({ pathname: `/shelters/${shelterId}/dashboard/info` });
   };
 
+  const goToCreateShelter = () => {
+    router.push({ pathname: '/shelters/create' });
+  };
+
   return (
-    <Section title={ 'Ваши приюты' }>
+    <Section
+      title={ 'Ваши приюты' }
+      action={
+        <Button
+          type={ 'primary' }
+          onClick={ goToCreateShelter }
+        >
+          Добавить приют
+        </Button>
+      }
+    >
       <Flex className={ styles.container }>
         { shelters.map(shelter => (
           <ShelterReference

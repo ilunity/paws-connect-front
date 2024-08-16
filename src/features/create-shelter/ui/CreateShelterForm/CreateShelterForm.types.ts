@@ -1,8 +1,10 @@
+import { PhoneNumber } from 'antd-phone-input';
+
 export type FieldType = {
   name: string;
   description: string;
   location: string;
-  tel: string;
+  tel: PhoneNumber;
 };
 
 export const enum CREATE_SHELTER_FORM_TYPES {
