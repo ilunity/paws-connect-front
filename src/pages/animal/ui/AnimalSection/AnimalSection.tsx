@@ -14,7 +14,7 @@ export const AnimalSection: React.FC<AnimalSectionProps> = ({ animal }) => {
   const { styles } = useStyles();
   const router = useRouter();
 
-  const goToShelter = (shelterId: number) => {
+  const goToShelter = (shelterId: string) => {
     router.push({ pathname: `/shelters/${shelterId}` });
   };
 

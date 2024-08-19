@@ -16,7 +16,7 @@ class AnimalsService {
   }
 
   getByShelter(shelterId: string): ApiRequestFnResponse<IAnimal[]> {
-    return api.get(`animals?shelterId=${shelterId}`);
+    return api.get(`animals`, { params: { shelterId } });
   }
 
   update(animal: IUpdateAnimalBody): ApiRequestFnResponse<IAnimal> {

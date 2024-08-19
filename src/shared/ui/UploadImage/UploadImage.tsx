@@ -21,9 +21,9 @@ const beforeUpload = (file: FileType, maxSize: number) => {
 
 const stubRequest: UploadProps['customRequest'] = ({ onSuccess }) => {
   setTimeout(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    onSuccess('ok');
+    if (onSuccess) {
+      onSuccess('ok');
+    }
   }, 0);
 };
 

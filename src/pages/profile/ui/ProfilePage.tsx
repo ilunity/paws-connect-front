@@ -32,8 +32,8 @@ export const getServerSideProps: GetServerSideProps<ProfilePageProps> = async ({
 export const ProfilePage: React.FC<ProfilePageProps> = ({ user, shelters }) => {
   return (
     <Layout>
-      <ProfileSection user={user} />
-      <SheltersProfileSection shelters={shelters} />
+      <ProfileSection user={ user } />
+      <SheltersProfileSection shelters={ shelters } />
     </Layout>
   );
 };

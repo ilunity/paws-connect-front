@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 export const AnimalsSection: React.FC<AnimalsSectionProps> = ({ animals }) => {
   const router = useRouter();
 
-  const goToAnimal = (animalId: number) => {
+  const goToAnimal = (animalId: string) => {
     router.push({ pathname: `/animals/${animalId}` });
   };
 

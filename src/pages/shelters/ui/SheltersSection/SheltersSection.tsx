@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 export const SheltersSection: React.FC<SheltersSectionProps> = ({ shelters }) => {
   const router = useRouter();
 
-  const goToShelter = (shelterId: number) => {
+  const goToShelter = (shelterId: string) => {
     router.push({ pathname: `/shelters/${shelterId}` });
   };
 
