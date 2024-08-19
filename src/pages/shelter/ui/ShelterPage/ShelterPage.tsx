@@ -8,12 +8,12 @@ import { ShelterSection } from '@pages/shelter/ui/ShelterSection';
 import { animalsService, IAnimal } from '@entities/animal';
 import { AnimalsSection } from '@widgets/animals-section';
 
-export const getServerSideProps: GetServerSideProps<ShelterPageProps> = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps<ShelterPageProps> = async ({ params, res }) => {
   const shelterId = params?.shelterId as string;
 
   const shelterResponse = await executeRequest(() => shelterService.getOne(shelterId));
   if (shelterResponse.error) {
-    throw new Error(shelterResponse.error);
+    return { notFound: true };
   }
 
   const animalsResponse = await executeRequest(() => animalsService.getByShelter(shelterId));
@@ -33,7 +33,7 @@ export const ShelterPage: React.FC<ShelterPageProps> = ({ shelter, animals }) =>
   return (
     <Layout>
       <ShelterSection shelter={ shelter } />
-      <AnimalsSection animals={ animals }/>
+      <AnimalsSection animals={ animals } />
     </Layout>
   );
 };

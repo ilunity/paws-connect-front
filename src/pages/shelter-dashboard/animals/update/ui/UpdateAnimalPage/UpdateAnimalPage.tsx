@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
 
   const animalResponse = await executeRequest(() => animalsService.getOne(animalId));
   if (animalResponse.error) {
-    throw new Error(animalResponse.error);
+    return { notFound: true };
   }
 
   return {
