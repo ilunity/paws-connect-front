@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimalsListProps } from './AnimalsList.types';
 import { useStyles } from './AnimalsList.styles';
-import { Col, Row, Typography } from 'antd';
+import { Col, Row } from 'antd';
 import { AnimalCard } from '@entities/animal';
 
 export const AnimalsList: React.FC<AnimalsListProps> = ({ animals, onClick }) => {
@@ -18,7 +18,7 @@ export const AnimalsList: React.FC<AnimalsListProps> = ({ animals, onClick }) =>
           lg={ { flex: '33%' } }
           xl={ { flex: '25%' } }
         >
-          <AnimalCard animal={ animal } onClick={ onClick }/>
+          <AnimalCard animal={ animal } onClick={ onClick } />
         </Col>
       )) }
     </Row>

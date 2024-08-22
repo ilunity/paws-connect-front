@@ -7,7 +7,6 @@ export const useStyles = createStyles(({ token }) => ({
   },
   image: {
     objectFit: 'cover',
-
   },
   textContainer: {
     justifyContent: 'space-between',
@@ -19,7 +18,6 @@ export const useStyles = createStyles(({ token }) => ({
   },
   secondaryText: {
     fontSize: token.fontSizeLG,
-    color: '#C5705D',
   },
   description: {
     minHeight: token.fontSize * token.lineHeight * 8,

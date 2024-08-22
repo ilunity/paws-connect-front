@@ -19,12 +19,6 @@ export const useStyles = createStyles(({ css, token, responsive }) => ({
 
       background: repeat url("/background/background-image.png");
   `,
-  content: {
-    flexGrow: 1,
-    padding: token.padding,
-    background: token.colorBgContainer,
-    borderRadius: token.borderRadiusLG,
-  },
   asideLayout: {
     minHeight: '100%',
   },

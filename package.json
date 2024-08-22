@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.21.0",
     "@clerk/nextjs": "^4.29.7",
     "antd": "^5.14.0",
     "antd-phone-input": "^0.3.9",

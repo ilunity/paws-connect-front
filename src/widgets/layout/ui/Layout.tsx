@@ -11,10 +11,13 @@ export const Layout: React.FC<LayoutProps> = (
     aside,
     children,
     loading = false,
+    contentClassName,
   },
 ) => {
 
   const { styles } = useStyles();
+
+  const contentLayoutClassName = contentClassName ? `${styles.contentContainer} ${contentClassName}` : styles.contentContainer;
 
   return (
     <>
@@ -31,12 +34,12 @@ export const Layout: React.FC<LayoutProps> = (
                 <Sider className={ styles.aside }>
                   { aside }
                 </Sider>
-                <Content className={ styles.contentContainer }>
+                <Content className={ contentLayoutClassName }>
                   { children }
                 </Content>
               </AntdLayout>)
             : (
-              <Content className={ styles.contentContainer }>
+              <Content className={ contentLayoutClassName }>
                 { children }
               </Content>)
           }

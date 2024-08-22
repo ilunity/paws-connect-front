@@ -1,1 +1,1 @@
-export { default, getServerSideProps } from '@pages/shelters';
+export { default } from '@pages/home';
