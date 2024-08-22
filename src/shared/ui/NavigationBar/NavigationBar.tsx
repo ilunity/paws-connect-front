@@ -6,13 +6,14 @@ import { firstLevelNavigationRoutes } from './first-level-navigation-routes';
 export const NavigationBar: React.FC = () => {
 
   return (
-    <Space>
+    <Space size={ 'large' }>
       {
         firstLevelNavigationRoutes.map((route) => (
           <Link
             key={ route.href }
             href={ route.href }
             buttonLink
+            size={ 'large' }
           >
             { route.title }
           </Link>

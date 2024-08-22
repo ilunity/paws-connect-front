@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStyles } from './UserButton.styles';
+import { useDynamicTokenStyles } from './UserButton.styles';
 import { SignedIn, SignedOut, useUser } from '@clerk/nextjs';
 import { Avatar, Space, Typography } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -7,7 +7,7 @@ import { UserButtonDropDown } from '@entities/user/ui/UserButton/UserButtonDropD
 import { SignInButton } from '@shared/ui';
 
 export const UserButton: React.FC = () => {
-  const { styles } = useStyles();
+  const { styles } = useDynamicTokenStyles();
   const { user } = useUser();
 
   return (

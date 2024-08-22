@@ -1,14 +1,19 @@
 import { createStyles } from 'antd-style';
+import { theme } from 'antd';
 
-export const useStyles = createStyles(({ token }) => ({
-  container: {
-    lineHeight: token.lineHeightSM,
-    cursor: 'pointer',
-  },
-  username: {
-    color: token.colorTextLightSolid,
-  },
-  downIcon: {
-    color: token.colorTextLightSolid,
-  },
-}));
+export const useDynamicTokenStyles = () => {
+  const { token } = theme.useToken();
+
+  return createStyles(() => ({
+    container: {
+      lineHeight: token.lineHeightSM,
+      cursor: 'pointer',
+    },
+    username: {
+      color: token.colorPrimary,
+    },
+    downIcon: {
+      color: token.colorPrimary,
+    },
+  }))();
+}

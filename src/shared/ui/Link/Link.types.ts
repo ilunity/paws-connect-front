@@ -4,4 +4,5 @@ export interface LinkProps {
   href: string;
   children: ReactNode;
   buttonLink?: boolean;
+  size?: 'default' | 'large';
 }

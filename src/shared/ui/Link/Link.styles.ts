@@ -1,26 +1,66 @@
 import { createStyles } from 'antd-style';
+import { theme } from 'antd';
 
-export const useStyles = createStyles(({ token, css }) => ({
-  buttonLink: css`
-      color: ${token.colorTextLightSolid};
-      border: 1px solid transparent;
-      border-bottom: 1px solid ${token.colorTextLightSolid};
-      padding: ${token.paddingXXS}px;
+export interface StylesProps {
+  size?: 'default' | 'large';
+}
 
-      &:hover {
-          border: 1px solid ${token.colorTextLightSolid};
-          border-radius: ${token.borderRadiusSM}px;
-      }
-  `,
-  textLink: css`
-      color: ${token.colorLink};
+export const useDynamicTokenStyles = (props?: StylesProps) => {
+  const { token } = theme.useToken();
 
-      &:hover {
-          color: ${token.colorLinkHover};
-      }
+  return createStyles(({ css }, { size = 'default' }: StylesProps) => ({
+    buttonLink: css`
+        color: ${token.colorPrimary};
+        padding: ${token.paddingXXS}px;
+        font-size: ${size === 'large' ? token.fontSizeXL : token.fontSize}px;
 
-      &:active {
-          color: ${token.colorLinkActive};
-      }
-  `,
-}));
+        &:hover {
+            border-bottom: 1px solid ${token.colorPrimary};
+        }
+
+        &:active {
+            opacity: 0.8;
+        }
+    `,
+    textLink: css`
+        color: ${token.colorLink};
+
+        &:hover {
+            color: ${token.colorLinkHover};
+        }
+
+        &:active {
+            color: ${token.colorLinkActive};
+        }
+    `,
+  }))({ size: 'large' });
+};
+
+// export const useStyles = createStyles(({ token, css }, { size = 'default' }: StylesProps) => {
+//   return {
+//     buttonLink: css`
+//         color: #C5705D;
+//         padding: ${token.paddingXXS}px;
+//         font-size: ${size === 'large' ? token.fontSizeXL : token.fontSize}px;
+//
+//         &:hover {
+//             border-bottom: 1px solid #C5705D;
+//         }
+//
+//         &:active {
+//             opacity: 0.8;
+//         }
+//     `,
+//     textLink: css`
+//         color: ${token.colorLink};
+//
+//         &:hover {
+//             color: ${token.colorLinkHover};
+//         }
+//
+//         &:active {
+//             color: ${token.colorLinkActive};
+//         }
+//     `,
+//   }
+// })

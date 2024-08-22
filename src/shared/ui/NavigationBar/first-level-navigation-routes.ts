@@ -5,6 +5,10 @@ interface NavigationRoute {
 
 export const firstLevelNavigationRoutes: NavigationRoute[] = [
   {
+    href: '/animals',
+    title: 'Животные',
+  },
+  {
     href: '/shelters',
     title: 'Приюты',
   },

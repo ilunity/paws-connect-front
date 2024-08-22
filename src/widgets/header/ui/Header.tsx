@@ -1,19 +1,22 @@
 import React from 'react';
 import { Layout, Typography } from 'antd';
-import { useStyles } from './Header.styles';
+import { useDynamicTokenStyles } from './Header.styles';
 import { NavigationBar } from '@shared/ui/NavigationBar';
 import { UserButton } from '@entities/user';
+import NextLink from 'next/link';
 
 const { Header: AntdHeader } = Layout;
 
 export const Header: React.FC = () => {
-  const { styles } = useStyles();
+  const { styles } = useDynamicTokenStyles();
 
   return (
     <AntdHeader className={ styles.container }>
-      <Typography className={ styles.logo }>
-        PawsConnect
-      </Typography>
+      <NextLink href={ '/' } passHref>
+        <Typography className={ styles.logo }>
+          PawsConnect
+        </Typography>
+      </NextLink>
       <NavigationBar />
       <UserButton />
     </AntdHeader>
