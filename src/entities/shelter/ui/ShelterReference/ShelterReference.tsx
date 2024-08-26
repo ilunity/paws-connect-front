@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShelterReferenceProps } from './ShelterReference.types';
 import { useStyles } from './ShelterReference.styles';
-import { Card, Flex, Typography } from 'antd';
+import { Card, Flex, Tag, Typography } from 'antd';
 import { PhoneNumberLink } from '@shared/ui';
 
 const { Text } = Typography;
@@ -11,6 +11,7 @@ export const ShelterReference: React.FC<ShelterReferenceProps> = (
     shelter,
     onClick,
     size = 'default',
+    status = false,
   },
 ) => {
   const { styles } = useStyles();
@@ -30,7 +31,18 @@ export const ShelterReference: React.FC<ShelterReferenceProps> = (
             ({ shelter.location })
           </Text>
         </Flex>
-        <PhoneNumberLink phoneNumber={ shelter.tel } />
+        <Flex className={ styles.sideContainer }>
+          <PhoneNumberLink phoneNumber={ shelter.tel } />
+          { status &&
+          <Tag color={ 'blue' }>
+            <Typography.Text
+              className={ styles.text }
+            >
+              { shelter.verified ? 'Одобрено' : 'На рассмотрении' }
+            </Typography.Text>
+          </Tag>
+          }
+        </Flex>
       </Flex>
     </Card>
   );

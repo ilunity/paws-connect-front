@@ -1,7 +1,7 @@
-import { ROLES } from '@shared/types/index';
+import { USER_ROLES } from '@shared/types/index';
 
 export interface ClerkMetadata {
-  roles?: `${ROLES}`[];
+  roles?: `${USER_ROLES}`[];
   shelterOwner: string[];
   shelterWorker: string[];
 }

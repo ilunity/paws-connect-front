@@ -12,6 +12,11 @@ export const useStyles = createStyles(({ token }) => ({
     gap: token.marginSM,
     flexWrap: 'wrap',
   },
+  sideContainer: {
+    display: 'flex',
+    gap: token.marginSM,
+    alignItems: 'center',
+  },
   text: {
     fontSize: token.fontSizeXL,
   },

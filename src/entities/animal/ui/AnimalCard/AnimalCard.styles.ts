@@ -7,6 +7,7 @@ export const useStyles = createStyles(({ token }) => ({
   },
   image: {
     objectFit: 'cover',
+    border: `1px solid ${token.colorBorder}`,
   },
   textContainer: {
     justifyContent: 'space-between',

@@ -10,5 +10,7 @@ export const useStyles = createStyles(({ token }) => ({
   },
   userRoleTag: {
     marginLeft: 'auto',
+    display: 'flex',
+    alignItems: 'center',
   }
 }));

@@ -1,8 +1,7 @@
-export enum ROLES {
+export enum USER_ROLES {
   USER = 'USER',
-  SHELTER_WORKER = 'SHELTER_WORKER',
-  SHELTER_OWNER = 'SHELTER_OWNER',
   MODERATOR = 'MODERATOR',
+  ADMIN = 'ADMIN',
 }
 
 export enum GENDER {

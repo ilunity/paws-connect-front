@@ -37,6 +37,7 @@ export const SheltersProfileSection: React.FC<SheltersProfileSectionProps> = ({ 
             size={ 'small' }
             shelter={ shelter }
             onClick={ goToShelterDashboard }
+            status
           />
         )) }
       </Flex>

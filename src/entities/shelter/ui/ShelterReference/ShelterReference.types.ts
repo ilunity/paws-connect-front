@@ -4,4 +4,5 @@ export interface ShelterReferenceProps {
   shelter: IShelter;
   onClick: (shelterId: string) => void;
   size?: 'small' | 'default';
+  status?: boolean;
 }
