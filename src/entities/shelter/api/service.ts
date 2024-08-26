@@ -22,6 +22,10 @@ class ShelterService {
   update(shelter: IUpdateShelterBody): ApiRequestFnResponse<IShelter> {
     return api.put('shelters', shelter);
   }
+
+  getCities():ApiRequestFnResponse<string[]> {
+    return api.get(`shelters/cities`);
+  }
 }
 
 export const shelterService = new ShelterService();

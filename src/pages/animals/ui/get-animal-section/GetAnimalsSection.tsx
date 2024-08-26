@@ -4,13 +4,13 @@ import { useStyles } from './GetAnimalsSection.styles';
 import { Section } from '@shared/ui';
 import { GetAnimalsForm } from '@features/get-animals';
 
-export const GetAnimalsSection: React.FC<GetAnimalsSectionProps> = () => {
+export const GetAnimalsSection: React.FC<GetAnimalsSectionProps> = ({ sheltersCities }) => {
   const { styles } = useStyles();
 
   return (
     <div className={ styles.wrapper }>
       <Section title={ 'Параметры питомца' } level={ 3 }>
-        <GetAnimalsForm />
+        <GetAnimalsForm cities={ sheltersCities } />
       </Section>
     </div>
   );

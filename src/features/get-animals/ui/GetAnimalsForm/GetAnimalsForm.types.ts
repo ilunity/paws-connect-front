@@ -7,4 +7,6 @@ export type FieldType = {
   type: `${ANIMAL_TYPE}`;
 };
 
-export interface GetAnimalsFormProps {}
+export interface GetAnimalsFormProps {
+  cities: string[];
+}

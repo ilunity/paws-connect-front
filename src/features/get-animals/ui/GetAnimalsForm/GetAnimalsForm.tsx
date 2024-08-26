@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { FieldType, GetAnimalsFormProps } from './GetAnimalsForm.types';
-import { Button, Form, FormProps, Input, Space } from 'antd';
+import { AutoComplete, AutoCompleteProps, Button, Form, FormProps, Space } from 'antd';
 import { GenderSelect } from '@shared/ui';
 import { AnimalTypeSelect } from '@entities/animal';
 import { useSearchParamsObject, useUpdateSearchParams } from '@shared/utils';
 
-export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = () => {
+
+export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = ({ cities }) => {
   const updateSearchParams = useUpdateSearchParams();
   const params = useSearchParamsObject();
   const [form] = Form.useForm();
@@ -22,6 +23,11 @@ export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = () => {
     form.resetFields();
     form.submit();
   };
+
+  const citiesOptions: AutoCompleteProps['options'] = cities.map(city => ({
+    label: city,
+    value: city,
+  }));
 
   return (
     <Form
@@ -42,7 +48,13 @@ export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = () => {
         label="Город"
         name="location"
       >
-        <Input />
+        <AutoComplete
+          options={ citiesOptions }
+          filterOption={ (inputValue, option) => {
+            const value = `${option?.value}`;
+            return value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;
+          } }
+        />
       </Form.Item>
       <Form.Item<FieldType>
         label="Пол"
