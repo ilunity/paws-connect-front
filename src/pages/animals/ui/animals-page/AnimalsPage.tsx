@@ -9,13 +9,13 @@ import { animalsService, IAnimal } from '@entities/animal';
 import { GetAnimalsSection } from '../get-animal-section';
 import { Flex } from 'antd';
 import { shelterService } from '@entities/shelter';
+import { IGetAnimalsParams } from '@entities/animal/api/types';
 
 export const getServerSideProps: GetServerSideProps<AnimalsPageProps> = async ({ query }) => {
-  // @ts-ignore
-  const animalsResponse = await executeRequest(() => animalsService.get(query));
+  const animalsResponse = await executeRequest(() => animalsService.get(query as IGetAnimalsParams));
 
   if (animalsResponse.error) {
-    throw new Error(animalsResponse.error);
+    return { notFound: true };
   }
   const animals = animalsResponse.data as IAnimal[];
 
@@ -38,9 +38,9 @@ export const AnimalsPage: React.FC<AnimalsPageProps> = ({ animals, sheltersCitie
 
   return (
     <Layout>
-      <Flex className={styles.container}>
-        <GetAnimalsSection sheltersCities={sheltersCities} />
-        <AnimalsSection animals={animals} />
+      <Flex className={ styles.container }>
+        <GetAnimalsSection sheltersCities={ sheltersCities } />
+        <AnimalsSection animals={ animals } />
       </Flex>
     </Layout>
   );

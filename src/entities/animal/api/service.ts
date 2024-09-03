@@ -1,31 +1,31 @@
-import { api, ApiRequestFnResponse } from '@shared/api';
+import { api, ApiProtectedRequestFn, ApiPublicRequestFn } from '@shared/api';
 import { IAnimal, IExtendedAnimal } from '@entities/animal';
 import { ICreateAnimalBody, IGetAnimalsParams, IUpdateAnimalBody } from '@entities/animal/api/types';
 
 class AnimalsService {
-  create(animal: ICreateAnimalBody): ApiRequestFnResponse<IAnimal> {
-    return api.post('animals', animal);
-  }
+  create: ApiProtectedRequestFn<IAnimal, ICreateAnimalBody> = (animal, { request } = {}) => {
+    return api.post('animals', animal, { request });
+  };
 
-  get(params: IGetAnimalsParams): ApiRequestFnResponse<IAnimal[]> {
-    return api.get(`animals`, { params });
-  }
+  get: ApiPublicRequestFn<IAnimal[], IGetAnimalsParams> = (params) => {
+    return api.get(`animals`, { params, authorization: false });
+  };
 
-  getOne(id: string): ApiRequestFnResponse<IExtendedAnimal> {
-    return api.get(`animals/${id}`);
-  }
+  getOne: ApiPublicRequestFn<IExtendedAnimal, string> = (id) => {
+    return api.get(`animals/${id}`, { authorization: false });
+  };
 
-  getByShelter(shelterId: string): ApiRequestFnResponse<IAnimal[]> {
-    return api.get(`animals`, { params: { shelterId } });
-  }
+  getByShelter: ApiPublicRequestFn<IAnimal[], string> = (shelterId) => {
+    return api.get(`animals`, { params: { shelterId }, authorization: false });
+  };
 
-  update(animal: IUpdateAnimalBody): ApiRequestFnResponse<IAnimal> {
-    return api.put('animals', animal);
-  }
+  update: ApiProtectedRequestFn<IAnimal, IUpdateAnimalBody> = (animal, { request } = {}) => {
+    return api.put('animals', animal, { request });
+  };
 
-  remove(id: string) {
-    return api.delete(`animals/${id}`);
-  }
+  remove: ApiProtectedRequestFn<void, string> = (id, { request } = {}) => {
+    return api.delete(`animals/${id}`, { request });
+  };
 }
 
 export const animalsService = new AnimalsService();

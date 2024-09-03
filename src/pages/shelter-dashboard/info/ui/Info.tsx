@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<InfoProps> = async ({ req, p
 
   const shelterResponse = await executeRequest(() => shelterService.getOne(shelterId));
   if (shelterResponse.error) {
-    throw new Error(shelterResponse.error);
+    return { notFound: true };
   }
 
   return {

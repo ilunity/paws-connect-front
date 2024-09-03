@@ -19,7 +19,7 @@ export const UpdateAnimalSection: React.FC<UpdateAnimalSectionProps> = ({ animal
     requestHandler(response);
 
     if (response.success) {
-      messageApi.success('Питомец удален!')
+      messageApi.success('Питомец удален!');
       router.back();
     }
   };

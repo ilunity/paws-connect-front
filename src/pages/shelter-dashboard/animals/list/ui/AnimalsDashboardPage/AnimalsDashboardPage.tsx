@@ -12,7 +12,7 @@ export const getServerSideProps: GetServerSideProps<AnimalsDashboardPageProps> =
 
   const animalsResponse = await executeRequest(() => animalsService.getByShelter(shelterId));
   if (animalsResponse.error) {
-    throw new Error(animalsResponse.error);
+    return { notFound: true };
   }
 
   return {

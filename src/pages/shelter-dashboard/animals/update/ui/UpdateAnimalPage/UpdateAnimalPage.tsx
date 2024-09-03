@@ -2,9 +2,7 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { SHELTER_DASHBOARD_ITEMS } from '@widgets/shelter-dashboard-navigation/ui/ShelterDashboardNavigation.types';
 import { ShelterDashboardLayout } from '@widgets/shelter-dashboard-layout';
-import {
-  UpdateAnimalPageProps,
-} from '@pages/shelter-dashboard/animals/update/ui/UpdateAnimalPage/UpdateAnimalPage.types';
+import { UpdateAnimalPageProps } from './UpdateAnimalPage.types';
 import { executeRequest } from '@shared/api';
 import { animalsService, IExtendedAnimal } from '@entities/animal';
 import { UpdateAnimalSection } from '../UpdateAnimalSection';

@@ -24,8 +24,8 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = (
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     const response = type === CREATE_ANIMAL_FORM_TYPES.CREATE
-      ? await executeRequest(() => animalsService.create({ ...values, shelterId }))
-      : await executeRequest(() => animalsService.update({ ...values, animalId }));
+      ? await executeRequest(() => animalsService.create({ ...values, shelterId: `${shelterId}` }))
+      : await executeRequest(() => animalsService.update({ ...values, animalId: `${animalId}` }));
 
     requestHandler(response);
     if (response.success) {

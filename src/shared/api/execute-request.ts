@@ -1,4 +1,4 @@
-import { ApiRequestFn } from '@shared/api/api.types';
+import { ApiRequestFnResponse } from '@shared/api/api.types';
 import { defineAxiosError } from '@shared/api/define-axios-error';
 
 export type IApiResponse<DataType> =
@@ -15,9 +15,9 @@ export type IApiResponse<DataType> =
   status: number;
 };
 
-export const executeRequest = async <DataType>(
-  requestFn: ApiRequestFn<DataType>,
-): Promise<IApiResponse<DataType>> => {
+export const executeRequest = async <ReturnType>(
+  requestFn: () => ApiRequestFnResponse<ReturnType>,
+): Promise<IApiResponse<ReturnType>> => {
   try {
     const response = await requestFn();
 

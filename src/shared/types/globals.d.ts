@@ -1,4 +1,5 @@
 import { USER_ROLES } from '@shared/types/index';
+import { GetServerSidePropsContext } from 'next';
 
 export interface ClerkMetadata {
   roles?: `${USER_ROLES}`[];
@@ -16,3 +17,9 @@ declare global {
   }
 }
 
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    authorization?: boolean | undefined;
+    request?: GetServerSidePropsContext['req'] | undefined;
+  }
+}

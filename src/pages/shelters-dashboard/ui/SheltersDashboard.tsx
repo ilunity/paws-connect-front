@@ -9,7 +9,7 @@ import { SheltersProfileSection } from '@widgets/shelters-profile-section';
 
 export const getServerSideProps: GetServerSideProps<SheltersDashboardProps> = async ({ req }) => {
   const { userId } = getAuth(req);
-  const response = await executeRequest(() => shelterService.getByUser(userId as string));
+  const response = await executeRequest(() => shelterService.getByUser(userId as string, { request: req }));
 
   const resultShelters = response.data || [];
 
