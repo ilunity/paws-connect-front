@@ -3,7 +3,7 @@ import { Link } from '@shared/ui';
 
 export const SignInButton: React.FC = () => {
   return (
-    <Link href={ 'https://lucky-foal-95.accounts.dev/sign-in' }>
+    <Link href={ '/sign-in' }>
       Войти
     </Link>
   );
