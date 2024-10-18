@@ -35,32 +35,3 @@ export const useDynamicTokenStyles = (props?: StylesProps) => {
     `,
   }))({ size: 'large' });
 };
-
-// export const useStyles = createStyles(({ token, css }, { size = 'default' }: StylesProps) => {
-//   return {
-//     buttonLink: css`
-//         color: #C5705D;
-//         padding: ${token.paddingXXS}px;
-//         font-size: ${size === 'large' ? token.fontSizeXL : token.fontSize}px;
-//
-//         &:hover {
-//             border-bottom: 1px solid #C5705D;
-//         }
-//
-//         &:active {
-//             opacity: 0.8;
-//         }
-//     `,
-//     textLink: css`
-//         color: ${token.colorLink};
-//
-//         &:hover {
-//             color: ${token.colorLinkHover};
-//         }
-//
-//         &:active {
-//             color: ${token.colorLinkActive};
-//         }
-//     `,
-//   }
-// })
