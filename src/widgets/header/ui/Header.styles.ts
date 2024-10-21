@@ -17,5 +17,10 @@ export const useDynamicTokenStyles = () => {
       color: token.colorPrimary,
       fontSize: token.fontSizeHeading3,
     },
+    userButtonWrapper: {
+      display:'flex',
+      minWidth: 150,
+      justifyContent: 'flex-end'
+    },
   }))();
 };
