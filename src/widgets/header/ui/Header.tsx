@@ -18,7 +18,9 @@ export const Header: React.FC = () => {
         </Typography>
       </NextLink>
       <NavigationBar />
-      <UserButton />
+      <div className={ styles.userButtonWrapper }>
+        <UserButton />
+      </div>
     </AntdHeader>
   );
 };

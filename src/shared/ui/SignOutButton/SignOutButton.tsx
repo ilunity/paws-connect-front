@@ -11,10 +11,10 @@ export const SignOutButton: React.FC = () => {
   const router = useRouter();
 
   return (
-    <Space className={ styles.container }>
-      <Typography.Link
-        onClick={ () => signOut(() => router.push('/')) }
-      >
+    <Space className={ styles.container }
+      onClick={ () => signOut(() => router.push('/')) }
+    >
+      <Typography.Link>
         Выйти
       </Typography.Link>
       <LogoutOutlined className={ styles.logOutIcon } />
