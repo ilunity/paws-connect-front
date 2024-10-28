@@ -6,8 +6,10 @@ import { ANIMAL_STATUS, animalsService, AnimalTypeSelect } from '@entities/anima
 import { GenderSelect, UploadImage } from '@shared/ui';
 import { requestMessageHandler } from '@shared/utils/message-handler';
 
-const WRAPPER_COL = { offset: 4, span: 8 };
 const { useForm } = Form;
+
+const SM_LABEL_SPAN = 6;
+const XS_LABEL_SPAN = 24;
 
 export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = (
   {
@@ -37,8 +39,8 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = (
     }
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-    messageApi.error(`Failed: ${errorInfo}`);
+  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = () => {
+    messageApi.error(`Ошибка! Проверьте корректность заполнения полей.`);
   };
 
   const required = type === CREATE_ANIMAL_FORM_TYPES.CREATE;
@@ -54,7 +56,7 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = (
       { contextHolder }
       <Form
         name={ 'create-animal-form' }
-        labelCol={ { span: WRAPPER_COL.offset } }
+        labelCol={ { xs: { span: XS_LABEL_SPAN }, sm: { span: SM_LABEL_SPAN } } }
         style={ { maxWidth: 800 } }
         initialValues={ initialTextValues }
         onFinish={ onFinish }
@@ -121,7 +123,9 @@ export const CreateAnimalForm: React.FC<CreateAnimalFormProps> = (
         >
           <AnimalTypeSelect />
         </Form.Item>
-        <Form.Item wrapperCol={ WRAPPER_COL }>
+        <Form.Item
+          wrapperCol={ { xs: { offset: 0 }, sm: { offset: SM_LABEL_SPAN } } }
+        >
           <Button type="primary" htmlType="submit">
             Подтвердить
           </Button>
