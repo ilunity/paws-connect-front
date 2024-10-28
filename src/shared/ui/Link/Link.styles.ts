@@ -33,5 +33,5 @@ export const useDynamicTokenStyles = (props?: StylesProps) => {
             color: ${token.colorLinkActive};
         }
     `,
-  }))({ size: 'large' });
+  }))(props);
 };

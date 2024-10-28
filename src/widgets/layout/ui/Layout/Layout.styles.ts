@@ -1,4 +1,10 @@
 import { createStyles } from 'antd-style';
+import {
+  LAYOUT_PADDING_HORIZONTAL,
+  LAYOUT_PADDING_VERTICAL,
+  SM_LAYOUT_PADDING_HORIZONTAL,
+  SM_LAYOUT_PADDING_VERTICAL,
+} from '@widgets/layout/ui/consts';
 
 export const useStyles = createStyles(({ css, token, responsive }) => ({
   container: {
@@ -11,10 +17,10 @@ export const useStyles = createStyles(({ css, token, responsive }) => ({
       flex-direction: column;
       flex-grow: 1;
 
-      padding: 32px 128px;
+      padding: ${LAYOUT_PADDING_VERTICAL} ${LAYOUT_PADDING_HORIZONTAL};
 
       ${responsive.sm} {
-          padding: 16px 32px;
+          padding: ${SM_LAYOUT_PADDING_VERTICAL} ${SM_LAYOUT_PADDING_HORIZONTAL};
       }
 
       background: repeat url("/background/background-image.png");
