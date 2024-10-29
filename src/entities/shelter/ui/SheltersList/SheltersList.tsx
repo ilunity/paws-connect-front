@@ -9,8 +9,9 @@ export const SheltersList: React.FC<SheltersListProps> = ({ shelters, onClick })
       { shelters.map(shelter => (
         <Col
           key={ shelter.id }
-          xl={ 8 }
-          lg={ 12 }
+          xxl={ 6 }
+          lg={ 8 }
+          md={ 12 }
           xs={ 24 }
         >
           <ShelterCard

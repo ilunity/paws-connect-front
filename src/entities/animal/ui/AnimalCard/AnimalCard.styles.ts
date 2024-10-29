@@ -2,12 +2,12 @@ import { createStyles } from 'antd-style';
 
 export const useStyles = createStyles(({ token }) => ({
   container: {
-    maxWidth: 300,
     flex: 1,
   },
   image: {
     objectFit: 'cover',
     border: `1px solid ${token.colorBorder}`,
+    aspectRatio: '16 / 9',
   },
   textContainer: {
     justifyContent: 'space-between',

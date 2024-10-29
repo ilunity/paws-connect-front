@@ -9,6 +9,7 @@ import Icon, { InfoOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useParams } from 'next/navigation';
 import PawOutlined from 'public/icons/paw-outlined.svg';
+import { useResponsive } from 'antd-style';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -24,7 +25,7 @@ const workersItems: MenuItem[] = [
   {
     key: SHELTER_DASHBOARD_ITEMS.ANIMALS,
     label: 'Питомцы',
-    icon: <Icon component={ PawOutlined }/>,
+    icon: <Icon component={ PawOutlined } />,
     children: [
       {
         key: SHELTER_DASHBOARD_ITEMS.ANIMALS_LIST,
@@ -41,6 +42,7 @@ const workersItems: MenuItem[] = [
 export const ShelterDashboardNavigation: React.FC<ShelterDashboardNavigationProps> = ({ owner, selected }) => {
   const router = useRouter();
   const params = useParams();
+  const { xs } = useResponsive();
 
   const items = owner ? [...ownerItems, ...workersItems] : workersItems;
 
@@ -54,7 +56,7 @@ export const ShelterDashboardNavigation: React.FC<ShelterDashboardNavigationProp
     <Menu
       onClick={ handleClick }
       selectedKeys={ [selected] }
-      mode="horizontal"
+      mode={ xs ? 'inline' : 'horizontal' }
       items={ items }
     />
   );
