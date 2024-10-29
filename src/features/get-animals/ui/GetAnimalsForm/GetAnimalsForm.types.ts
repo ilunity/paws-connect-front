@@ -9,4 +9,5 @@ export type FieldType = {
 
 export interface GetAnimalsFormProps {
   cities: string[];
+  afterSubmit?: () => void;
 }

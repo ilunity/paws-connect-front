@@ -1,0 +1,4 @@
+export const MD_LAYOUT_PADDING_VERTICAL = '16px';
+export const MD_LAYOUT_PADDING_HORIZONTAL = '32px';
+export const LAYOUT_PADDING_VERTICAL = '32px';
+export const LAYOUT_PADDING_HORIZONTAL= '128px';

@@ -19,7 +19,7 @@ export const AnimalCard: React.FC<AnimalCardProps> = ({ animal, onClick }) => {
       hoverable
       cover={
         <Image
-          height={ 170 }
+          height={ 150 }
           className={ styles.image }
           src={ process.env.NEXT_PUBLIC_STATIC + animal.avatar }
           alt={ 'Изображение питомца' }
@@ -28,6 +28,7 @@ export const AnimalCard: React.FC<AnimalCardProps> = ({ animal, onClick }) => {
         />
       }
       onClick={ handleClick }
+      size={ 'small' }
     >
       <Flex className={ styles.textContainer }>
         <Text className={ styles.primaryText }>
