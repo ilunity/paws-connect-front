@@ -9,18 +9,16 @@ export const useStyles = createStyles(({ token , responsive}) => ({
       }
   `,
   imageWrapper: css`
-      width: 600px;
-      height: 350px;
+      width: 100%;
+      max-width: 750px;
 
+      ${responsive.xl} {
+          width: 550px;
+      }
+      
       ${responsive.lg} {
-          width: 500px;
-          height: 300px;
-      }
-
-      ${responsive.sm} {
-          width: 326px;
-          height: 190px;
-      }
+           width: 100%;
+       }
   `,
   image: {
     objectFit: 'cover',
