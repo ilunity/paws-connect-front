@@ -11,3 +11,4 @@ export * from './StatisticCard';
 export * from './PhoneNumberLink';
 export * from './DropdownLink';
 export * from './TextLogo';
+export * from './QueryParamsPagination';

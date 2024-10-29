@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Typography } from 'antd';
+import { Layout } from 'antd';
 import { useDynamicTokenStyles } from './Header.styles';
 import { NavigationBar } from '@shared/ui/NavigationBar';
 import { UserButton } from '@entities/user';

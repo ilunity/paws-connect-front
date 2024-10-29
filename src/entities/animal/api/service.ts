@@ -1,15 +1,24 @@
 import { api, ApiProtectedRequestFn, ApiPublicRequestFn } from '@shared/api';
 import { IAnimal, IExtendedAnimal } from '@entities/animal';
-import { ICreateAnimalBody, IGetAnimalsParams, IUpdateAnimalBody } from '@entities/animal/api/types';
+import {
+  ICreateAnimalBody,
+  IGetAnimalsParams,
+  IGetPaginatedAnimalsParams,
+  IUpdateAnimalBody,
+} from '@entities/animal/api/types';
 
 class AnimalsService {
   create: ApiProtectedRequestFn<IAnimal, ICreateAnimalBody> = (animal, { request } = {}) => {
     return api.post('animals', animal, { request });
   };
 
-  get: ApiPublicRequestFn<IAnimal[], IGetAnimalsParams> = (params) => {
+  get: ApiPublicRequestFn<IAnimal[], IGetPaginatedAnimalsParams> = (params) => {
     return api.get(`animals`, { params, authorization: false });
   };
+
+  getCount: ApiPublicRequestFn<number, IGetAnimalsParams>= (params)=> {
+    return api.get(`animals/count`, { params, authorization: false });
+  }
 
   getOne: ApiPublicRequestFn<IExtendedAnimal, string> = (id) => {
     return api.get(`animals/${id}`, { authorization: false });

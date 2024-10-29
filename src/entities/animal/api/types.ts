@@ -10,6 +10,11 @@ export type IGetAnimalsParams = {
   gender: GENDER;
 };
 
+export type IGetPaginatedAnimalsParams = IGetAnimalsParams & {
+  page: number;
+  size: number;
+}
+
 export type IUpdateAnimalBody = Partial<Omit<ICreateAnimalBody, 'shelterId'>> & {
   animalId: string;
 };
