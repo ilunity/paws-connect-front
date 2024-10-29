@@ -24,9 +24,9 @@ export const ShelterReference: React.FC<ShelterReferenceProps> = (
     <Card size={ size }>
       <Flex className={ styles.container }>
         <Flex className={ styles.clickableContainer } onClick={ handleClick }>
-          <Typography className={ styles.text }>
+          <Text className={ styles.text }>
             { shelter.name }
-          </Typography>
+          </Text>
           <Text type={ 'secondary' } className={ styles.text }>
             ({ shelter.location })
           </Text>
