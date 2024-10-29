@@ -5,6 +5,7 @@ import { executeRequest } from '@shared/api';
 import { animalsService, IExtendedAnimal } from '@entities/animal';
 import { Layout } from '@widgets/layout';
 import { AnimalSection } from '../AnimalSection';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<AnimalPageProps> = async ({ params }) => {
   const animalId = params?.id as string;
@@ -23,8 +24,15 @@ export const getServerSideProps: GetServerSideProps<AnimalPageProps> = async ({ 
 
 export const AnimalPage: React.FC<AnimalPageProps> = ({ animal }) => {
   return (
-    <Layout>
-      <AnimalSection animal={ animal } />
-    </Layout>
+    <>
+      <Head>
+        <title>
+          Страница питомца — { animal.name }
+        </title>
+      </Head>
+      <Layout>
+        <AnimalSection animal={ animal } />
+      </Layout>
+    </>
   );
 };

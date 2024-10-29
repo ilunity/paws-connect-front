@@ -6,11 +6,12 @@ import { AnimalsSection } from '@widgets/animals-section';
 import { GetServerSideProps } from 'next';
 import { executeRequest } from '@shared/api';
 import { animalsService, IAnimal } from '@entities/animal';
-import { GetAnimalsSection } from '../get-animal-section';
+import { GetAnimalsSection } from '../GetAnimalSection';
 import { Flex } from 'antd';
 import { shelterService } from '@entities/shelter';
 import { IGetAnimalsParams } from '@entities/animal/api/types';
 import { useResponsive } from 'antd-style';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<AnimalsPageProps> = async ({ query }) => {
   const animalsResponse = await executeRequest(() => animalsService.get(query as IGetAnimalsParams));
@@ -44,20 +45,27 @@ export const AnimalsPage: React.FC<AnimalsPageProps> = ({ animals, sheltersCitie
   const closeFormModal = () => setIsFormModalOpen(false);
 
   return (
-    <Layout>
-      <Flex className={ styles.container }>
-        <GetAnimalsSection
-          sheltersCities={ sheltersCities }
-          isModalForm={ isFormModal }
-          isFormModalOpen={ isFormModalOpen }
-          closeFormModal={ closeFormModal }
-        />
-        <AnimalsSection
-          animals={ animals }
-          showOpenFormModalButton={ isFormModal }
-          openFormModal={ openFormModal }
-        />
-      </Flex>
-    </Layout>
+    <>
+      <Head>
+        <title>
+          Поиск питомцев
+        </title>
+      </Head>
+      <Layout>
+        <Flex className={ styles.container }>
+          <GetAnimalsSection
+            sheltersCities={ sheltersCities }
+            isModalForm={ isFormModal }
+            isFormModalOpen={ isFormModalOpen }
+            closeFormModal={ closeFormModal }
+          />
+          <AnimalsSection
+            animals={ animals }
+            showOpenFormModalButton={ isFormModal }
+            openFormModal={ openFormModal }
+          />
+        </Flex>
+      </Layout>
+    </>
   );
 };

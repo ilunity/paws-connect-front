@@ -6,6 +6,7 @@ import { GetServerSideProps } from 'next';
 import { executeRequest } from '@shared/api';
 import { animalsService, IAnimal } from '@entities/animal';
 import { UpdateAnimalsSection } from '@widgets/update-animals-section';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<AnimalsDashboardPageProps> = async ({ req, params }) => {
   const shelterId = params?.shelterId as string;
@@ -25,11 +26,18 @@ export const getServerSideProps: GetServerSideProps<AnimalsDashboardPageProps> =
 
 export const AnimalsDashboardPage: React.FC<AnimalsDashboardPageProps> = ({ shelterId, animals }) => {
   return (
-    <ShelterDashboardLayout
-      dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_LIST }
-      shelterId={ shelterId }
-    >
-      <UpdateAnimalsSection animals={ animals } />
-    </ShelterDashboardLayout>
+    <>
+      <Head>
+        <title>
+          Питомцы приюта
+        </title>
+      </Head>
+      <ShelterDashboardLayout
+        dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_LIST }
+        shelterId={ shelterId }
+      >
+        <UpdateAnimalsSection animals={ animals } />
+      </ShelterDashboardLayout>
+    </>
   );
 };

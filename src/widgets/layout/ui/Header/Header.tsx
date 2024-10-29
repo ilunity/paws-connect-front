@@ -5,6 +5,7 @@ import { NavigationBar } from '@shared/ui/NavigationBar';
 import { UserButton } from '@entities/user';
 import NextLink from 'next/link';
 import { useResponsive } from 'antd-style';
+import { TextLogo } from '@shared/ui';
 
 
 const { Header: AntdHeader } = Layout;
@@ -16,10 +17,8 @@ export const Header: React.FC = () => {
   return (
     <AntdHeader className={ styles.container }>
       { md &&
-        <NextLink href={ '/public' } passHref>
-          <Typography className={ styles.logo }>
-            PawsConnect
-          </Typography>
+        <NextLink href={ '/' } passHref>
+          <TextLogo />
         </NextLink>
       }
       <NavigationBar dropdown={ !md } />

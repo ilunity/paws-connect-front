@@ -6,6 +6,7 @@ import { UpdateAnimalPageProps } from './UpdateAnimalPage.types';
 import { executeRequest } from '@shared/api';
 import { animalsService, IExtendedAnimal } from '@entities/animal';
 import { UpdateAnimalSection } from '../UpdateAnimalSection';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = async ({ req, params }) => {
   const shelterId = params?.shelterId as string;
@@ -26,11 +27,18 @@ export const getServerSideProps: GetServerSideProps<UpdateAnimalPageProps> = asy
 
 export const UpdateAnimalPage: React.FC<UpdateAnimalPageProps> = ({ shelterId, animal }) => {
   return (
-    <ShelterDashboardLayout
-      dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_UPDATE }
-      shelterId={ shelterId }
-    >
-      <UpdateAnimalSection animal={ animal } />
-    </ShelterDashboardLayout>
+    <>
+      <Head>
+        <title>
+          Изменить информацию питомца — { animal.name }
+        </title>
+      </Head>
+      <ShelterDashboardLayout
+        dashboardItemName={ SHELTER_DASHBOARD_ITEMS.ANIMALS_UPDATE }
+        shelterId={ shelterId }
+      >
+        <UpdateAnimalSection animal={ animal } />
+      </ShelterDashboardLayout>
+    </>
   );
 };
