@@ -4,5 +4,8 @@ export const useStyles = createStyles(({ token }) => ({
   container: {
     flexDirection: 'row',
     gap: token.marginXXL,
+  },
+  animalsBlock: {
+    flexDirection: 'column',
   }
 }));

@@ -1,6 +1,7 @@
 import { IAnimal } from '@entities/animal';
 
 export interface AnimalsPageProps {
-  animals: IAnimal[];
+  paginatedAnimals: IAnimal[];
+  animalsCount: number;
   sheltersCities: string[];
 }
