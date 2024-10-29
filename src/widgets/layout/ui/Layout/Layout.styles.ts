@@ -2,9 +2,9 @@ import { createStyles } from 'antd-style';
 import {
   LAYOUT_PADDING_HORIZONTAL,
   LAYOUT_PADDING_VERTICAL,
-  SM_LAYOUT_PADDING_HORIZONTAL,
-  SM_LAYOUT_PADDING_VERTICAL,
-} from '@widgets/layout/ui/consts';
+  MD_LAYOUT_PADDING_HORIZONTAL,
+  MD_LAYOUT_PADDING_VERTICAL,
+} from '@widgets/layout/utils/consts';
 
 export const useStyles = createStyles(({ css, token, responsive }) => ({
   container: {
@@ -19,8 +19,8 @@ export const useStyles = createStyles(({ css, token, responsive }) => ({
 
       padding: ${LAYOUT_PADDING_VERTICAL} ${LAYOUT_PADDING_HORIZONTAL};
 
-      ${responsive.sm} {
-          padding: ${SM_LAYOUT_PADDING_VERTICAL} ${SM_LAYOUT_PADDING_HORIZONTAL};
+      ${responsive.md} {
+          padding: ${MD_LAYOUT_PADDING_VERTICAL} ${MD_LAYOUT_PADDING_HORIZONTAL};
       }
 
       background: repeat url("/background/background-image.png");

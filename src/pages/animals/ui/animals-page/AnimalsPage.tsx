@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AnimalsPageProps } from './AnimalsPage.types';
 import { useStyles } from './AnimalsPage.styles';
 import { Layout } from '@widgets/layout';
@@ -10,6 +10,7 @@ import { GetAnimalsSection } from '../get-animal-section';
 import { Flex } from 'antd';
 import { shelterService } from '@entities/shelter';
 import { IGetAnimalsParams } from '@entities/animal/api/types';
+import { useResponsive } from 'antd-style';
 
 export const getServerSideProps: GetServerSideProps<AnimalsPageProps> = async ({ query }) => {
   const animalsResponse = await executeRequest(() => animalsService.get(query as IGetAnimalsParams));
@@ -35,12 +36,27 @@ export const getServerSideProps: GetServerSideProps<AnimalsPageProps> = async ({
 
 export const AnimalsPage: React.FC<AnimalsPageProps> = ({ animals, sheltersCities }) => {
   const { styles } = useStyles();
+  const [isFormModalOpen, setIsFormModalOpen] = useState<boolean>(false);
+  const { md } = useResponsive();
+  const isFormModal = !md;
+
+  const openFormModal = () => setIsFormModalOpen(true);
+  const closeFormModal = () => setIsFormModalOpen(false);
 
   return (
     <Layout>
       <Flex className={ styles.container }>
-        <GetAnimalsSection sheltersCities={ sheltersCities } />
-        <AnimalsSection animals={ animals } />
+        <GetAnimalsSection
+          sheltersCities={ sheltersCities }
+          isModalForm={ isFormModal }
+          isFormModalOpen={ isFormModalOpen }
+          closeFormModal={ closeFormModal }
+        />
+        <AnimalsSection
+          animals={ animals }
+          showOpenFormModalButton={ isFormModal }
+          openFormModal={ openFormModal }
+        />
       </Flex>
     </Layout>
   );

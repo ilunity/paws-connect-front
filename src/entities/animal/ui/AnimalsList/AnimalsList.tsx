@@ -8,15 +8,18 @@ export const AnimalsList: React.FC<AnimalsListProps> = ({ animals, onClick }) =>
   const { styles } = useStyles();
 
   return (
-    <Row gutter={ [16, 16] }>
+    <Row
+      className={ styles.container }
+      gutter={ [16, 16] }
+    >
       { animals.map((animal) => (
         <Col
           className={ styles.column }
           key={ animal.id }
           xs={ { flex: '100%' } }
           sm={ { flex: '50%' } }
-          lg={ { flex: '33%' } }
-          xl={ { flex: '25%' } }
+          xl={ { flex: '33%' } }
+          xxl={ { flex: '25%' } }
         >
           <AnimalCard animal={ animal } onClick={ onClick } />
         </Col>

@@ -6,13 +6,19 @@ import { AnimalTypeSelect } from '@entities/animal';
 import { useSearchParamsObject, useUpdateSearchParams } from '@shared/utils';
 
 
-export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = ({ cities }) => {
+export const GetAnimalsForm: React.FC<GetAnimalsFormProps> = (
+  {
+    cities,
+    afterSubmit,
+  },
+) => {
   const updateSearchParams = useUpdateSearchParams();
   const params = useSearchParamsObject();
   const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     updateSearchParams(values);
+    afterSubmit?.();
   };
 
   useEffect(() => {

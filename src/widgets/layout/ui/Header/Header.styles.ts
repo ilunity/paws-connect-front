@@ -1,6 +1,6 @@
 import { createStyles } from 'antd-style';
 import { theme } from 'antd';
-import { LAYOUT_PADDING_HORIZONTAL, SM_LAYOUT_PADDING_HORIZONTAL } from '@widgets/layout/ui/consts';
+import { LAYOUT_PADDING_HORIZONTAL, MD_LAYOUT_PADDING_HORIZONTAL } from '@widgets/layout/utils/consts';
 
 export const useDynamicTokenStyles = () => {
   const { token } = theme.useToken();
@@ -15,8 +15,8 @@ export const useDynamicTokenStyles = () => {
 
         padding: 0 ${LAYOUT_PADDING_HORIZONTAL};
 
-        ${responsive.sm} {
-            padding: 0 ${SM_LAYOUT_PADDING_HORIZONTAL};
+        ${responsive.md} {
+            padding: 0 ${MD_LAYOUT_PADDING_HORIZONTAL};
         }
     `,
     logo: {

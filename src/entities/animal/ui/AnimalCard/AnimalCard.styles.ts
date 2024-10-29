@@ -12,6 +12,8 @@ export const useStyles = createStyles(({ token }) => ({
   textContainer: {
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
+    columnGap: token.marginSM,
   },
   primaryText: {
     fontSize: token.fontSizeXL,
