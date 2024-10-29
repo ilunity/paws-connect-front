@@ -19,14 +19,9 @@ export const useDynamicTokenStyles = () => {
             padding: 0 ${MD_LAYOUT_PADDING_HORIZONTAL};
         }
     `,
-    logo: {
-      fontWeight: 'bold',
-      color: token.colorPrimary,
-      fontSize: token.fontSizeHeading3,
-    },
     userButtonWrapper: {
-      display:'flex',
-      justifyContent: 'flex-end'
+      display: 'flex',
+      justifyContent: 'flex-end',
     },
   }))();
 };

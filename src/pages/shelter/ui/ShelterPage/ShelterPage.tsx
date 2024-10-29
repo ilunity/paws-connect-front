@@ -7,6 +7,7 @@ import { Layout } from '@widgets/layout';
 import { ShelterSection } from '@pages/shelter/ui/ShelterSection';
 import { animalsService, IAnimal } from '@entities/animal';
 import { AnimalsSection } from '@widgets/animals-section';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<ShelterPageProps> = async ({ params, res }) => {
   const shelterId = params?.shelterId as string;
@@ -31,9 +32,16 @@ export const getServerSideProps: GetServerSideProps<ShelterPageProps> = async ({
 
 export const ShelterPage: React.FC<ShelterPageProps> = ({ shelter, animals }) => {
   return (
-    <Layout>
-      <ShelterSection shelter={ shelter } />
-      <AnimalsSection animals={ animals } />
-    </Layout>
+    <>
+      <Head>
+        <title>
+          Приют — { shelter.name }
+        </title>
+      </Head>
+      <Layout>
+        <ShelterSection shelter={ shelter } />
+        <AnimalsSection animals={ animals } />
+      </Layout>
+    </>
   );
 };

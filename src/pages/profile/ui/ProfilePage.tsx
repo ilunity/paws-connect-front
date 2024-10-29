@@ -8,6 +8,7 @@ import { ProfileSection } from '@widgets/profile-section';
 import { shelterService } from '@entities/shelter';
 import { SheltersProfileSection } from '@widgets/shelters-profile-section';
 import React from 'react';
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps<ProfilePageProps> = async ({ req }) => {
   const { userId } = getAuth(req);
@@ -30,9 +31,16 @@ export const getServerSideProps: GetServerSideProps<ProfilePageProps> = async ({
 
 export const ProfilePage: React.FC<ProfilePageProps> = ({ user, shelters }) => {
   return (
-    <Layout>
-      <ProfileSection user={ user } />
-      <SheltersProfileSection shelters={ shelters } />
-    </Layout>
+    <>
+      <Head>
+        <title>
+            Профиль пользователя — { user.name }
+        </title>
+      </Head>
+      <Layout>
+        <ProfileSection user={ user } />
+        <SheltersProfileSection shelters={ shelters } />
+      </Layout>
+    </>
   );
 };

@@ -10,3 +10,4 @@ export * from './Divider';
 export * from './StatisticCard';
 export * from './PhoneNumberLink';
 export * from './DropdownLink';
+export * from './TextLogo';
