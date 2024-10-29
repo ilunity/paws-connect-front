@@ -18,8 +18,8 @@ export const AnimalsList: React.FC<AnimalsListProps> = ({ animals, onClick }) =>
           key={ animal.id }
           xs={ { flex: '100%' } }
           sm={ { flex: '50%' } }
-          xl={ { flex: '33%' } }
-          xxl={ { flex: '25%' } }
+          md={ { flex: '33%' } }
+          xl={ { flex: '25%' } }
         >
           <AnimalCard animal={ animal } onClick={ onClick } />
         </Col>

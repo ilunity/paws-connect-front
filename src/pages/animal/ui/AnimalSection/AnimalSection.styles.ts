@@ -23,7 +23,8 @@ export const useStyles = createStyles(({ token , responsive}) => ({
   image: {
     objectFit: 'cover',
     borderRadius: token.borderRadiusLG,
-    border: `1px solid ${token.colorBorder}`
+    border: `1px solid ${token.colorBorder}`,
+    aspectRatio: '16 / 9',
   },
   animalInfoContainer: {
     flex: 1,

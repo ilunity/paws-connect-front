@@ -9,8 +9,8 @@ import PhoneInput from 'antd-phone-input';
 import { getStringFromPhoneNumber, phoneNumberValidator } from '@shared/utils';
 
 const { Title } = Typography;
-const FORM_WRAPPER_COL = { xs: { span: 9 }, lg: { span: 6 } };
-const OFFSET_WRAPPER = { xs: { offset: 9 }, lg: { offset: 6 } };
+const SM_LABEL_SPAN = 6;
+const XS_LABEL_SPAN = 24;
 
 export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
   {
@@ -49,15 +49,17 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
       { contextHolder }
       <Form
         name={ 'shelter-form' }
-        labelCol={ FORM_WRAPPER_COL }
+        labelCol={ { xs: { span: XS_LABEL_SPAN }, sm: { span: SM_LABEL_SPAN } } }
         style={ { maxWidth: 800 } }
         initialValues={ initialValues }
         onFinish={ onFinish }
         onFinishFailed={ onFinishFailed }
         autoComplete="off"
       >
-        <Form.Item wrapperCol={ OFFSET_WRAPPER }>
-          <Title level={ 2 }>
+        <Form.Item
+          wrapperCol={ { xs: { offset: 0 }, sm: { offset: SM_LABEL_SPAN } } }
+        >
+          <Title level={ 2 } style={ { marginBottom: 0 } }>
             { type === CREATE_SHELTER_FORM_TYPES.CREATE
               ? 'Создать приют'
               : 'Редактировать информацию о приюте'
@@ -92,7 +94,9 @@ export const CreateShelterForm: React.FC<CreateShelterFormProps> = (
         >
           <PhoneInput enableSearch />
         </Form.Item>
-        <Form.Item wrapperCol={ OFFSET_WRAPPER }>
+        <Form.Item
+          wrapperCol={ { xs: { offset: 0 }, sm: { offset: SM_LABEL_SPAN } } }
+        >
           <Button type="primary" htmlType="submit">
             Подтвердить
           </Button>

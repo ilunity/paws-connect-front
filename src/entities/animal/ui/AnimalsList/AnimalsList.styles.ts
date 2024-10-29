@@ -6,6 +6,5 @@ export const useStyles = createStyles(() => ({
   },
   column: {
     display: 'flex',
-    justifyContent: 'center',
   }
 }));
