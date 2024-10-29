@@ -6,6 +6,9 @@ import { DownOutlined } from '@ant-design/icons';
 import { UserButtonDropDown } from '@entities/user/ui/UserButton/UserButtonDropDown';
 import { SignInButton } from '@shared/ui';
 
+
+const { Text } = Typography;
+
 export const UserButton: React.FC = () => {
   const { styles } = useDynamicTokenStyles();
   const { user } = useUser();
@@ -15,9 +18,9 @@ export const UserButton: React.FC = () => {
       <SignedIn>
         <UserButtonDropDown>
           <Space className={ styles.container }>
-            <Typography className={ styles.username }>
+            <Text className={ styles.username }>
               { user?.username }
-            </Typography>
+            </Text>
             <Avatar
               size={ 32 }
               src={ user?.imageUrl }

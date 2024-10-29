@@ -2,7 +2,7 @@ import React from 'react';
 import { LayoutProps } from './Layout.types';
 import { useStyles } from './Layout.styles';
 import { Layout as AntdLayout, Spin } from 'antd';
-import { Header } from '@widgets/header';
+import { Header } from '@widgets/layout';
 
 const { Content, Sider } = AntdLayout;
 

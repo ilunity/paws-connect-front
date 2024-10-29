@@ -5,6 +5,8 @@ import { Typography } from 'antd';
 import { useDynamicTokenStyles } from './Link.styles';
 
 
+const {Text} = Typography
+
 export const Link: React.FC<LinkProps> = (
   {
     href,
@@ -19,14 +21,14 @@ export const Link: React.FC<LinkProps> = (
     <NextLink href={ href } passHref>
       { buttonLink
         ? (
-          <Typography className={ styles.buttonLink }>
+          <Text className={ styles.buttonLink }>
             { children }
-          </Typography>
+          </Text>
         )
         : (
-          <Typography className={ styles.textLink }>
+          <Text className={ styles.textLink }>
             { children }
-          </Typography>
+          </Text>
         )
       }
     </NextLink>

@@ -5,17 +5,8 @@ export const useDynamicTokenStyles = () => {
   const { token } = theme.useToken();
 
   return createStyles(() => ({
-    container: {
-      lineHeight: token.lineHeightSM,
-      cursor: 'pointer',
-      minWidth: 100,
-      maxWidth: 150,
-    },
-    username: {
-      color: token.colorPrimary,
-    },
-    downIcon: {
+    dropdownLink: {
       color: token.colorPrimary,
     },
   }))();
-}
+};
