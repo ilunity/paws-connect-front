@@ -8,7 +8,7 @@ export const QueryParamsPagination: React.FC<QueryParamsPaginationProps> = ({ el
   const updateSearchParams = useUpdateSearchParams();
   const params = useSearchParamsObject();
   const size = +params?.size || 10;
-  const page = +params?.page || 10;
+  const page = +params?.page || 1;
 
   const handleChange = (page: number, size: number) => {
     updateSearchParams({ page: `${page}`, size: `${size}` });
