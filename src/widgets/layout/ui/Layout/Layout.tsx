@@ -12,9 +12,9 @@ export const Layout: React.FC<LayoutProps> = (
     children,
     loading = false,
     contentClassName,
+    withHeader = true,
   },
 ) => {
-
   const { styles } = useStyles();
 
   const contentLayoutClassName = contentClassName ? `${styles.contentContainer} ${contentClassName}` : styles.contentContainer;
@@ -24,7 +24,7 @@ export const Layout: React.FC<LayoutProps> = (
       <Spin spinning={ loading } fullscreen />
       { !loading &&
         <AntdLayout className={ styles.container }>
-          <Header />
+          { withHeader && <Header /> }
           { aside
             ? (
               <AntdLayout

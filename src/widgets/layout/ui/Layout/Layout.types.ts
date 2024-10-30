@@ -5,4 +5,5 @@ export interface LayoutProps {
   children: ReactNode;
   loading?: boolean;
   contentClassName?: string;
+  withHeader?: boolean;
 }
