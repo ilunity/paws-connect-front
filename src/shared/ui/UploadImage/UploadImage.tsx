@@ -4,6 +4,7 @@ import { useStyles } from './UploadImage.styles';
 import { GetProp, message, Upload, UploadProps } from 'antd';
 import { Base64 } from '@shared/utils';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import ImgCrop from 'antd-img-crop';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -61,25 +62,32 @@ export const UploadImage: React.FC<UploadImageProps> = (
   );
 
   return (
-    <Upload
-      name="upload-image"
-      listType="picture-card"
-      className="avatar-uploader"
-      showUploadList={ false }
-      beforeUpload={ (file) => beforeUpload(file, maxMBSize) }
-      onChange={ handleChange }
-      customRequest={ stubRequest }
+    <ImgCrop
+      aspect={ 16 / 9 }
+      showReset
+      modalTitle={ 'Изменить изображение:' }
     >
-      { imageUrl
-        ? (
-          <img
-            className={ styles.img }
-            src={ imageUrl }
-            alt="Загруженное изображение"
-          />
-        )
-        : uploadButton
-      }
-    </Upload>
+      <Upload
+        rootClassName={ styles.container }
+        name="upload-image"
+        listType="picture-card"
+        className="avatar-uploader"
+        showUploadList={ false }
+        beforeUpload={ (file) => beforeUpload(file, maxMBSize) }
+        onChange={ handleChange }
+        customRequest={ stubRequest }
+      >
+        { imageUrl
+          ? (
+            <img
+              className={ styles.img }
+              src={ imageUrl }
+              alt="Загруженное изображение"
+            />
+          )
+          : uploadButton
+        }
+      </Upload>
+    </ImgCrop>
   );
 };
